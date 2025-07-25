@@ -23,7 +23,7 @@ class MainViewModel : ViewModel(), KoinComponent {
 
     var indicators: List<Indicator>? = null
 
-    val selection = mutableStateMapOf<String, IndicatorOption?>()
+    val selection = mutableStateMapOf<String, String?>()
 
     var chartData by mutableStateOf<ChartData?>(null)
         private set
@@ -36,7 +36,7 @@ class MainViewModel : ViewModel(), KoinComponent {
         selection.clear()
     }
 
-    fun setSelection(key: String, value: IndicatorOption) {
+    fun setSelection(key: String, value: String) {
         selection[key] = value
     }
 
@@ -56,32 +56,32 @@ class MainViewModel : ViewModel(), KoinComponent {
                 for (i in options.indices) {
                     val currentOption = options[i]
                     val lowerBound =
-                        currentOption.name.toIntOrNull() ?: continue // Skip if not a number
+                        currentOption.description.toIntOrNull() ?: continue // Skip if not a number
 
                     val isFirstOption = (i == 0)
                     val isLastOption = (i == options.size - 1)
 
                     if (isLastOption) {
                         if (userAge >= lowerBound) {
-                            selection[ageGroupIndicator.name] = currentOption
+                            selection[ageGroupIndicator.id] = currentOption.id
                             break // Found the group, no need to check further
                         }
                     } else if (isFirstOption) {
                         val nextOption = options[i + 1]
                         val upperBoundExclusive =
-                            nextOption.name.toIntOrNull() ?: continue // Skip if not a number
+                            nextOption.description.toIntOrNull() ?: continue // Skip if not a number
 
                         if (userAge < upperBoundExclusive) {
-                            selection[ageGroupIndicator.name] = currentOption
+                            selection[ageGroupIndicator.id] = currentOption.id
                             break // Found the group, no need to check further
                         }
                     } else {
                         val nextOption = options[i + 1]
                         val upperBoundExclusive =
-                            nextOption.name.toIntOrNull() ?: continue // Skip if not a number
+                            nextOption.description.toIntOrNull() ?: continue // Skip if not a number
 
                         if (userAge in lowerBound until upperBoundExclusive) {
-                            selection[ageGroupIndicator.name] = currentOption
+                            selection[ageGroupIndicator.id] = currentOption.id
                             break // Found the group, no need to check further
                         }
                     }
@@ -89,18 +89,18 @@ class MainViewModel : ViewModel(), KoinComponent {
             }
         }
 
-        //TODO:: Make this more modular
+        //TODO:: Make this more modular and value dependent (Right now it depeneds on the order of option in json file 0 being less than 18.5
         indicators?.find { it.id == "BMI" }?.let { bmiIndicator ->
             if (userBMI < 18.5) {
-                selection[bmiIndicator.name] = bmiIndicator.options[0]
+                selection[bmiIndicator.id] = bmiIndicator.options[0].id
             } else {
-                selection[bmiIndicator.name] = bmiIndicator.options[1]
+                selection[bmiIndicator.id] = bmiIndicator.options[1].id
             }
         }
 
         indicators?.forEach { indicator ->
-            if (selection[indicator.name] == null) {
-                Log.i(TAG, "Null Indicator ${indicator.name}")
+            if (selection[indicator.id] == null) {
+                Log.i(TAG, "Null Indicator ${indicator.id}")
                 return false
             }
         }
@@ -111,7 +111,9 @@ class MainViewModel : ViewModel(), KoinComponent {
     fun showChartDialog() {
         val nonNullSelection = buildMap<String, IndicatorOption> {
             for (s in selection) {
-                put(s.key, s.value ?: error("Empty indicator ${s.key}"))
+                val indicator = indicators?.find { it.id == s.key }
+                val option = indicator?.options?.find { it.id == s.value }
+                put(s.key, option ?: error("Empty indicator ${s.key}"))
             }
         }
         Log.i(TAG, "Showing Chart Dialog with ${nonNullSelection}")
@@ -124,15 +126,15 @@ class MainViewModel : ViewModel(), KoinComponent {
         showChartDialog = false
     }
 
-    fun enableAdultForm() {
-        indicators = adultIndicators
+    fun enableAdultForm(aIndicators: List<Indicator>) {
+        indicators = aIndicators
         Log.d(TAG, "Setting indicators ${indicators}")
         resetSelection()
 
     }
 
-    fun enableTeenForm() {
-        indicators = teenIndicators
+    fun enableTeenForm(tIndicators: List<Indicator>) {
+        indicators = tIndicators
         resetSelection()
     }
 }

@@ -1,8 +1,6 @@
 package com.example.unitest.util
 
 import android.content.Context
-import android.util.Log
-import androidx.core.os.LocaleListCompat
 import com.example.unitest.Indicator
 import com.example.unitest.IndicatorDeserializer
 import com.google.gson.GsonBuilder
@@ -19,7 +17,6 @@ class ReadIndicatorsData : KoinComponent {
 
     fun readJsonData(): Pair<List<Indicator>, List<Indicator>> {
         val context: Context by inject()
-        Log.d("LocaleDebug", "Wide Locale::" + LocaleListCompat.getDefault().get(0))
         val adultJsonString =
             context.assets.open("AdultIndicators.json").bufferedReader().use { it.readText() }
         val teenJsonString =

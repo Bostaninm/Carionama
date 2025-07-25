@@ -23,7 +23,9 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
+import org.koin.compose.koinInject
 
 
 @Composable
@@ -32,7 +34,9 @@ fun IndicatorListChild(
     viewModel: MainViewModel,
     modifier: Modifier = Modifier
 ) {
-    val indicators = viewModel.teenIndicators
+    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject()
+    val childIndicators = indicatorsData.second
+    val indicators = childIndicators
     var selectedIndicator by remember { mutableStateOf(indicators.first()) }
     var sliderValue by remember { mutableStateOf(170f) }
     val scrollState = rememberScrollState()
@@ -56,6 +60,9 @@ fun IndicatorListChild(
         ) {
             indicators.forEach { indicator ->
                 when (indicator.id) {
+                    "AgeGroup" -> {
+                    }
+
                     "BMI" -> {
                         BMI(Modifier.padding(12.dp), { bmi -> viewModel.userBMI = bmi })
                     }
@@ -63,9 +70,9 @@ fun IndicatorListChild(
                     else -> {
                         Select(
                             indicator = indicator,
-                            selected = viewModel.selection[indicator.name]
+                            selected = indicator.options.firstOrNull { option -> option.id == viewModel.selection[indicator.id] }
                         ) { option ->
-                            viewModel.setSelection(indicator.name, option)
+                            viewModel.setSelection(indicator.id, option.id)
                         }
                     }
                 }

@@ -70,9 +70,9 @@ fun IndicatorListAdult(
                     else -> {
                         Select(
                             indicator = indicator,
-                            selected = viewModel.selection[indicator.id]
+                            selected = indicator.options.firstOrNull { option -> option.id == viewModel.selection[indicator.id] }
                         ) { option ->
-                            viewModel.setSelection(indicator.id, option)
+                            viewModel.setSelection(indicator.id, option.id)
                         }
                     }
                 }

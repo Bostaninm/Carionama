@@ -9,17 +9,17 @@ import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
 
 @Composable
-fun IndicatorOptionSelectionDialog(indicator : Indicator) {
+fun IndicatorOptionSelectionDialog(indicator: Indicator) {
     val viewModel = viewModel<MainViewModel>()
 
-    Dialog(onDismissRequest = {viewModel.closeIndicatorDialog()}) {
+    Dialog(onDismissRequest = { viewModel.closeIndicatorDialog() }) {
         LazyColumn {
             items(indicator.options) { indicatorOption ->
                 Button(onClick = {
-                    viewModel.setSelection(indicator.name, indicatorOption)
+                    viewModel.setSelection(indicator.name, indicatorOption.id)
                     viewModel.closeIndicatorDialog()
                 }) {
-                    Text(indicatorOption.name)
+                    Text(indicatorOption.description)
                 }
             }
         }

@@ -31,7 +31,7 @@ fun Option(
                     .padding(horizontal = 4.dp, vertical = 6.dp),
                 textAlign = TextAlign.Center,
                 style = MaterialTheme.typography.labelSmall,
-                text = option.name
+                text = option.description
             )
         })
 }

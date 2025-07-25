@@ -1,5 +1,6 @@
 package com.example.unitest
 
+import android.util.Log
 import com.google.gson.JsonDeserializationContext
 import com.google.gson.JsonDeserializer
 import com.google.gson.JsonElement
@@ -13,7 +14,7 @@ data class Indicator(
     val options: List<IndicatorOption>
 )
 
-data class IndicatorOption(val id: String, val name: String, val value: Float)
+data class IndicatorOption(val id: String, val description: String, val value: Float)
 
 data class ChartData(val pieChartData: List<PieChartData>)
 
@@ -31,11 +32,17 @@ class IndicatorDeserializer : JsonDeserializer<Indicator> {
         val name = jsonObject.get("name").asString
         val description = jsonObject.get("description").asString
 
-        val optionsObject = jsonObject.getAsJsonObject("options")
-        val optionsList = optionsObject.entrySet().map { entry ->
-            IndicatorOption(name = entry.key, value = entry.value.asFloat)
+        val optionsArray = jsonObject.getAsJsonArray("options")
+        val optionsList = mutableListOf<IndicatorOption>()
+        optionsArray.forEach { entry ->
+            val optionObject = entry.asJsonObject
+            val optionId = optionObject.get("id").asString
+            val optionDescription = optionObject.get("description").asString
+            val optionValue = optionObject.get("value").asFloat
+            optionsList.add(IndicatorOption(optionId, optionDescription, optionValue))
         }
 
-        return Indicator(id, name, description, optionsList)
+        Log.d("GSONDeserializeDebug", "LIST => (${optionsList})")
+        return Indicator(id, name, description, optionsList as List<IndicatorOption>)
     }
 }

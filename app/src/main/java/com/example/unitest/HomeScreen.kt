@@ -15,9 +15,11 @@ import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
+import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
 import com.example.unitest.RangedNumberInputField
 import com.example.unitest.ui.theme.UniTestTheme
+import org.koin.compose.koinInject
 
 @Composable
 fun HomeScreen(
@@ -25,15 +27,18 @@ fun HomeScreen(
     viewModel: MainViewModel,
     language: String
 ) {
+    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject()
 
     HomeContent { validAge ->
         if (validAge != null) {
             viewModel.userAge = validAge
             if (validAge > 18) {
-                viewModel.enableAdultForm()
+                val adultIndicators = indicatorsData.first
+                viewModel.enableAdultForm(adultIndicators)
                 navController.navigate("adult")
             } else {
-                viewModel.enableTeenForm()
+                val teenIndicators = indicatorsData.second
+                viewModel.enableTeenForm(teenIndicators)
                 navController.navigate("teen")
             }
         }
