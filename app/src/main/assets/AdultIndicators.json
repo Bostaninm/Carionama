@@ -20,115 +20,239 @@
     "id": "Gender",
     "name": "Gender",
     "description": "Please select your gender.",
-    "options": {
-      "Male": 0.0,
-      "Female": 1.137
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Male",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Female",
+        "value": 1.137
+      }
+    ]
   },
   {
     "id": "Smoking",
     "name": "Smoking Status",
     "description": "Do you currently smoke cigarettes?",
-    "options": {
-      "No, I don't smoke": 0.0,
-      "Yes, I smoke": 4.081
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "No, I don't smoke",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Yes, I smoke",
+        "value": 4.081
+      }
+    ]
   },
   {
     "id": "AlcoholUse",
     "name": "Alcohol Consumption",
     "description": "Do you consume alcohol?",
-    "options": {
-      "No, I don't consume": 0.0,
-      "Yes, I consume": 0.401
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "No, I don't consume",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Yes, I consume",
+        "value": 0.401
+      }
+    ]
   },
   {
     "id": "EducationLevel",
     "name": "Education Level",
     "description": "Please select your highest level of education.",
-    "options": {
-      "University degree or higher": 0.0,
-      "Less than university degree (e.g., High School Diploma)": 1.5
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "University degree or higher",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Less than university degree (e.g., High School Diploma)",
+        "value": 1.5
+      }
+    ]
   },
   {
     "id": "ToothBrushingFrequency",
     "name": "Tooth Brushing Frequency",
     "description": "How often do you usually brush your teeth per day?",
-    "options": {
-      "Twice a day or more": 0.0,
-      "Less than twice a day (e.g., once or irregularly)": 2.5
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Twice a day or more",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Less than twice a day (e.g., once or irregularly)",
+        "value": 2.5
+      }
+    ]
   },
   {
     "id": "Flossing",
     "name": "Dental Floss Use",
     "description": "Do you regularly use dental floss?",
-    "options": {
-      "Yes, I use it regularly": 0.0,
-      "No, I don't use it or use it irregularly": 1.5
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Yes, I use it regularly",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "No, I don't use it or use it irregularly",
+        "value": 1.5
+      }
+    ]
   },
   {
     "id": "Hypertension",
     "name": "Hypertension (High Blood Pressure)",
     "description": "Do you have hypertension (high blood pressure)?",
-    "options": {
-      "No, I am not hypertensive": 0.0,
-      "Yes, I am hypertensive": 2.18
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "No, I am not hypertensive",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Yes, I am hypertensive",
+        "value": 2.18
+      }
+    ]
   },
   {
     "id": "MouthwashUse",
     "name": "Mouthwash Use",
     "description": "Do you regularly use mouthwash?",
-    "options": {
-      "Yes, regularly": 0.0,
-      "No, or irregularly": 0.8
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Yes, regularly",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "No, or irregularly",
+        "value": 0.8
+      }
+    ]
   },
   {
-    "id": "MouthwashUse",
+    "id": "MouthwashUseConditional",
     "name": "Mouthwash Use (Only if not hypertensive)",
     "description": "If you are not hypertensive, do you use mouthwash?",
-    "options": {
-      "Yes, I use it (and I am not hypertensive)": 0.0,
-      "No, I don't use it (and I am not hypertensive)": 1.5,
-      "I am hypertensive (this question does not apply to me)": 0.0
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Yes, I use it (and I am not hypertensive)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "No, I don't use it (and I am not hypertensive)",
+        "value": 1.5
+      },
+      {
+        "id": 3,
+        "description": "I am hypertensive (this question does not apply to me)",
+        "value": 0.0
+      }
+    ]
   },
   {
     "id": "SES",
     "name": "Socioeconomic Status (SES)",
     "description": "Please select your socioeconomic group based on income quintiles (Quintile 5 = Wealthiest).",
-    "options": {
-      "Wealthiest (Quintile 5)": 0.0,
-      "Quintile 4": 1.234,
-      "Quintile 3 (Average)": 2.098,
-      "Quintile 2": 2.919,
-      "Poorest (Quintile 1)": 3.933
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Wealthiest (Quintile 5)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Quintile 4",
+        "value": 1.234
+      },
+      {
+        "id": 3,
+        "description": "Quintile 3 (Average)",
+        "value": 2.098
+      },
+      {
+        "id": 4,
+        "description": "Quintile 2",
+        "value": 2.919
+      },
+      {
+        "id": 5,
+        "description": "Poorest (Quintile 1)",
+        "value": 3.933
+      }
+    ]
   },
   {
     "id": "AgeGroup",
     "name": "Age Group",
     "description": "Please select your age group.",
-    "options": {
-      "35": 0.0,
-      "45": 4.071,
-      "55": 8.572,
-      "65": 11.311
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "35",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "45",
+        "value": 4.071
+      },
+      {
+        "id": 3,
+        "description": "55",
+        "value": 8.572
+      },
+      {
+        "id": 4,
+        "description": "65",
+        "value": 11.311
+      }
+    ]
   },
   {
     "id": "MaritalStatus",
     "name": "Marital Status",
     "description": "Please select your marital status.",
-    "options": {
-      "Single": 0.0,
-      "Married": 1.644,
-      "Divorced or Widowed": 1.770
-    }
+    "options": [
+      {
+        "id": 1,
+        "description": "Single",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Married",
+        "value": 1.644
+      },
+      {
+        "id": 3,
+        "description": "Divorced or Widowed",
+        "value": 1.770
+      }
+    ]
   }
 ]
