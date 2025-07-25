@@ -1,4 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">شاخص سلامت دندان</string>
+    <string name="english">انگلیسی</string>
+    <string name="farsi">فارسی</string>
+    <string name="language">زبان</string>
+    <string name="about">درباره ی برنامه</string>
+    <string name="bmi">شاخص توده بدنی</string>
+    <string name="about_page_description">مشخصات برنامه</string>
+    <string name="age">سن</string>
+    <string name="submit">ثبت</string>
+    <string name="done">اتمام</string>
+    <string name="enter_number">عددی وارد کنید</string>
+    <string name="invalid_range_error_message">عدد وارد شده باید بین %1$s و %2$s باشد</string>
+    <string name="invalid_number">عدد غیرمجاز</string>
+    <string name="height">قد</string>
+    <string name="weight">وزن</string>
 </resources>

@@ -1,3 +1,4 @@
+import android.annotation.SuppressLint
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
@@ -38,6 +39,7 @@ fun BasicSlider() {
     }
 }
 
+@SuppressLint("DefaultLocale")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun LabeledSlider(
@@ -73,11 +75,10 @@ fun LabeledSlider(
         Text(
             modifier = Modifier
                 .padding(start = 2.dp)
-                .weight(0.1f)
-                , textAlign = TextAlign.End
+                .weight(0.1f), textAlign = TextAlign.End
 //                .background(Color.LightGray, shape = RoundedCornerShape(percent = 50))
 //                .padding(vertical = 2.dp, horizontal = 12.dp)
-            , text = "${sliderValue.toInt()}"
+            , text = String.format("%d", sliderValue.toInt())
         )
     }
 }

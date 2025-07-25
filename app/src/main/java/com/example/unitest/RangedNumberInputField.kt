@@ -13,6 +13,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -42,7 +43,7 @@ fun RangedNumberInputField(
     onValueChange: (String) -> Unit,
     onNumberInRangeChanged: (Int?) -> Unit,
     modifier: Modifier = Modifier,
-    label: String = "Enter number",
+    label: String = stringResource(R.string.enter_number),
     minRange: Int = 0,
     maxRange: Int = 100,
     enabled: Boolean = true,
@@ -53,7 +54,9 @@ fun RangedNumberInputField(
     // Ensure minRange is not greater than maxRange
     val actualMinRange = minOf(minRange, maxRange)
     val actualMaxRange = maxOf(minRange, maxRange)
-
+    val rangeErrorMessage =
+        stringResource(R.string.invalid_range_error_message, actualMinRange, actualMaxRange)
+    val invalidNumberErrorMessage = stringResource(R.string.invalid_number)
     OutlinedTextField(
         value = value,
         onValueChange = { newText ->
@@ -68,11 +71,11 @@ fun RangedNumberInputField(
                         errorMessage = null
                     } else {
                         onNumberInRangeChanged(null)
-                        errorMessage = "Must be between $actualMinRange and $actualMaxRange"
+                        errorMessage = rangeErrorMessage
                     }
                 } else if (newText.isNotEmpty()) {
                     onNumberInRangeChanged(null)
-                    errorMessage = "Invalid number"
+                    errorMessage = invalidNumberErrorMessage
                 } else { // Empty text
                     onNumberInRangeChanged(null)
                     errorMessage = null // Clear error if input is empty
@@ -82,7 +85,7 @@ fun RangedNumberInputField(
         label = {
             Text(
                 modifier = Modifier.fillMaxWidth(),
-                text = "$label ($actualMinRange-$actualMaxRange)",
+                text = String.format("$label (%d-%d)", actualMinRange, actualMaxRange),
                 textAlign = TextAlign.Center
             )
         },

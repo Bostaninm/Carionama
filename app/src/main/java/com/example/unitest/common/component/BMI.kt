@@ -17,9 +17,11 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import com.example.unitest.R
 
 @Preview(showBackground = true)
 @Composable
@@ -39,7 +41,7 @@ fun BMI(modifier: Modifier = Modifier, setBMI: (Float) -> Unit) {
             defaultValue = 160f,
             valueRange = 50f..220f,
             steps = 169,
-            label = "Height",
+            label = stringResource(R.string.height),
             onValueChangeFinished = { setBMI(bmi) }
         ) { value ->
             height = value
@@ -49,7 +51,7 @@ fun BMI(modifier: Modifier = Modifier, setBMI: (Float) -> Unit) {
             defaultValue = 70f,
             valueRange = 20f..150f,
             steps = 129,
-            label = "Weight",
+            label = stringResource(R.string.weight),
             onValueChangeFinished = { setBMI(bmi) }
         ) { value ->
             weight = value
@@ -64,7 +66,7 @@ fun BMI(modifier: Modifier = Modifier, setBMI: (Float) -> Unit) {
                     .weight(0.2f)
                     .padding(end = 4.dp),
                 textAlign = TextAlign.Start,
-                text = "BMI",
+                text = stringResource(R.string.bmi),
             )
             Text(
                 modifier = Modifier

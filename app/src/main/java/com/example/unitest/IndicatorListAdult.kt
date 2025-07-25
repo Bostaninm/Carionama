@@ -21,10 +21,12 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
+import com.example.unitest.R
 import org.koin.compose.koinInject
 import org.koin.core.parameter.parametersOf
 import org.koin.core.qualifier.named
@@ -103,7 +105,7 @@ fun IndicatorListAdult(
             ) {
                 Icon(
                     Icons.Filled.Done,
-                    contentDescription = "Done",
+                    contentDescription = stringResource(R.string.done),
                     modifier = Modifier.size(64.dp)
                 )
             }

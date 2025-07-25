@@ -11,12 +11,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
+import com.example.unitest.R
 import com.example.unitest.RangedNumberInputField
 import com.example.unitest.ui.theme.UniTestTheme
 import org.koin.compose.koinInject
@@ -69,12 +71,12 @@ fun HomeContent(onSubmit: (validAge: Int?) -> Unit) {
                 value = inputAge,
                 onValueChange = { inputAge = it },
                 onNumberInRangeChanged = { validAge = it },
-                label = "Age",
+                label = stringResource(R.string.age),
                 minRange = 1,
                 maxRange = 99,
                 modifier = Modifier.width(256.dp)
             )
-            UButton(label = "Submit", onClick = { onSubmit(validAge) })
+            UButton(label = stringResource(R.string.submit), onClick = { onSubmit(validAge) })
         }
     }
 }

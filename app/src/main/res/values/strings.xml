@@ -4,4 +4,14 @@
     <string name="farsi">Farsi</string>
     <string name="language">Language</string>
     <string name="about">About</string>
+    <string name="bmi">BMI</string>
+    <string name="about_page_description">This is the About Page.</string>
+    <string name="age">Age</string>
+    <string name="submit">Submit</string>
+    <string name="done">Done</string>
+    <string name="enter_number">Enter number</string>
+    <string name="invalid_range_error_message">Must be between %1$s and %2$s</string>
+    <string name="invalid_number">Invalid number</string>
+    <string name="height">Height</string>
+    <string name="weight">Weight</string>
 </resources>
