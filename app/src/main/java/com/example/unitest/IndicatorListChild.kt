@@ -26,7 +26,6 @@ import androidx.navigation.NavController
 import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
 import org.koin.compose.koinInject
-import org.koin.core.parameter.parametersOf
 
 
 @Composable
@@ -35,7 +34,7 @@ fun IndicatorListChild(
     viewModel: MainViewModel,
     modifier: Modifier = Modifier
 ) {
-    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject { parametersOf("en") }
+    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject()
     val childIndicators = indicatorsData.second
     val indicators = childIndicators
     var selectedIndicator by remember { mutableStateOf(indicators.first()) }

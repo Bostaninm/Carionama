@@ -113,7 +113,10 @@ class MainViewModel : ViewModel(), KoinComponent {
             for (s in selection) {
                 val indicator = indicators?.find { it.id == s.key }
                 val option = indicator?.options?.find { it.id == s.value }
-                put(s.key, option ?: error("Empty indicator ${s.key}"))
+                put(
+                    indicator?.name ?: error("Indicator with id of ${s.key} was not found!"),
+                    option ?: error("Empty indicator ${s.key}")
+                )
             }
         }
         Log.i(TAG, "Showing Chart Dialog with ${nonNullSelection}")

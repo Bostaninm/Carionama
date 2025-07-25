@@ -16,7 +16,7 @@ fun IndicatorOptionSelectionDialog(indicator: Indicator) {
         LazyColumn {
             items(indicator.options) { indicatorOption ->
                 Button(onClick = {
-                    viewModel.setSelection(indicator.name, indicatorOption.id)
+                    viewModel.setSelection(indicator.id, indicatorOption.id)
                     viewModel.closeIndicatorDialog()
                 }) {
                     Text(indicatorOption.description)

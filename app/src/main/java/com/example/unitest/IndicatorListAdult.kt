@@ -1,4 +1,3 @@
-import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -38,7 +37,6 @@ fun IndicatorListAdult(
     modifier: Modifier = Modifier
 ) {
     val appLocale = koinInject<String>(named("AppLocale"))
-    Log.d("LocaleDebug", "AppLocale :: ${appLocale}")
     val indicatorsData: Pair<List<Indicator>, List<Indicator>> =
         koinInject { parametersOf(appLocale) }
     val adultIndicators = indicatorsData.first

@@ -32,7 +32,7 @@ import com.himanshoe.charty.pie.model.PieChartData
 @Composable
 fun ChartDialog(viewModel: MainViewModel) {
     val chartData =
-        viewModel.chartData ?: error("Char dialog was show when chartData was not assigned")
+        viewModel.chartData ?: error("Chart dialog was show when chartData was not assigned")
 
     Dialog(
         properties = DialogProperties(
