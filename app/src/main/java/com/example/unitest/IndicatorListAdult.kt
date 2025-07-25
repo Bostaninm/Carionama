@@ -1,3 +1,4 @@
+import android.util.Log
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -26,6 +27,8 @@ import androidx.navigation.NavController
 import com.example.unitest.Indicator
 import com.example.unitest.MainViewModel
 import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
+import org.koin.core.qualifier.named
 
 
 @Composable
@@ -34,7 +37,10 @@ fun IndicatorListAdult(
     viewModel: MainViewModel,
     modifier: Modifier = Modifier
 ) {
-    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject()
+    val appLocale = koinInject<String>(named("AppLocale"))
+    Log.d("LocaleDebug", "AppLocale :: ${appLocale}")
+    val indicatorsData: Pair<List<Indicator>, List<Indicator>> =
+        koinInject { parametersOf(appLocale) }
     val adultIndicators = indicatorsData.first
     val indicators = adultIndicators
     var selectedIndicator by remember { mutableStateOf(indicators.first()) }

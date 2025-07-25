@@ -20,6 +20,7 @@ import com.example.unitest.MainViewModel
 import com.example.unitest.RangedNumberInputField
 import com.example.unitest.ui.theme.UniTestTheme
 import org.koin.compose.koinInject
+import org.koin.core.parameter.parametersOf
 
 @Composable
 fun HomeScreen(
@@ -27,7 +28,7 @@ fun HomeScreen(
     viewModel: MainViewModel,
     language: String
 ) {
-    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject()
+    val indicatorsData: Pair<List<Indicator>, List<Indicator>> = koinInject { parametersOf("en") }
 
     HomeContent { validAge ->
         if (validAge != null) {
