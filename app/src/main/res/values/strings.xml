@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">UniTest2</string>
+    <string name="english">English</string>
+    <string name="farsi">Farsi</string>
+    <string name="language">Language</string>
+    <string name="about">About</string>
+</resources>

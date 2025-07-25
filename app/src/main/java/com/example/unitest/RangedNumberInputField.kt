@@ -1,0 +1,143 @@
+package com.example.unitest
+
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
+
+/**
+ * A reusable Composable for number input within a specified range.
+ *
+ * @param value The current text value of the input field.
+ * @param onValueChange Callback that is triggered when the input value changes.
+ *                      It provides the raw text input.
+ * @param onNumberInRangeChanged Callback that is triggered when a valid number
+ *                             within the specified range is entered or cleared.
+ *                             It provides the valid number as an Int?, or null if invalid/empty.
+ * @param modifier Modifier for this Composable.
+ * @param label The label to display for the text field.
+ * @param minRange The minimum allowed number (inclusive).
+ * @param maxRange The maximum allowed number (inclusive).
+ * @param enabled Controls the enabled state of the [OutlinedTextField]. When `false`,
+ *                this text field will not be clickable and visually muted.
+ * @param singleLine When set to true, this text field becomes a single horizontally scrolling
+ *                   text field instead of wrapping onto multiple lines.
+ */
+@Composable
+fun RangedNumberInputField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    onNumberInRangeChanged: (Int?) -> Unit,
+    modifier: Modifier = Modifier,
+    label: String = "Enter number",
+    minRange: Int = 0,
+    maxRange: Int = 100,
+    enabled: Boolean = true,
+    singleLine: Boolean = true
+) {
+    var errorMessage by remember(minRange, maxRange) { mutableStateOf<String?>(null) }
+
+    // Ensure minRange is not greater than maxRange
+    val actualMinRange = minOf(minRange, maxRange)
+    val actualMaxRange = maxOf(minRange, maxRange)
+
+    OutlinedTextField(
+        value = value,
+        onValueChange = { newText ->
+            // Allow only digits or empty string
+            if (newText.isEmpty() || newText.all { it.isDigit() }) {
+                onValueChange(newText) // Update the raw text state
+
+                val number = newText.toIntOrNull()
+                if (number != null) {
+                    if (number in actualMinRange..actualMaxRange) {
+                        onNumberInRangeChanged(number)
+                        errorMessage = null
+                    } else {
+                        onNumberInRangeChanged(null)
+                        errorMessage = "Must be between $actualMinRange and $actualMaxRange"
+                    }
+                } else if (newText.isNotEmpty()) {
+                    onNumberInRangeChanged(null)
+                    errorMessage = "Invalid number"
+                } else { // Empty text
+                    onNumberInRangeChanged(null)
+                    errorMessage = null // Clear error if input is empty
+                }
+            }
+        },
+        label = {
+            Text(
+                modifier = Modifier.fillMaxWidth(),
+                text = "$label ($actualMinRange-$actualMaxRange)",
+                textAlign = TextAlign.Center
+            )
+        },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        isError = errorMessage != null,
+        supportingText = {
+            if (errorMessage != null) {
+                Text(
+                    text = errorMessage!!,
+                    color = MaterialTheme.colorScheme.error,
+                    style = MaterialTheme.typography.bodySmall
+                )
+            }
+        },
+        enabled = enabled,
+        singleLine = singleLine,
+        modifier = modifier,
+    )
+}
+
+@Preview(showBackground = true)
+@Composable
+fun RangedNumberInputFieldPreview() {
+    var textValue by remember { mutableStateOf("") }
+    var validNumber by remember { mutableStateOf<Int?>(null) }
+
+    Column(modifier = Modifier.padding(16.dp)) {
+        RangedNumberInputField(
+            value = textValue,
+            onValueChange = { textValue = it },
+            onNumberInRangeChanged = { validNumber = it },
+            label = "Quantity",
+            minRange = 1,
+            maxRange = 50,
+            modifier = Modifier.fillMaxWidth()
+        )
+        Text(
+            text = "Raw input: $textValue",
+            modifier = Modifier.padding(top = 8.dp)
+        )
+        Text(
+            text = "Valid number in range: ${validNumber ?: "N/A"}",
+            modifier = Modifier.padding(top = 8.dp)
+        )
+
+        RangedNumberInputField(
+            value = "", // Example with initial empty and different range
+            onValueChange = { /* ... */ },
+            onNumberInRangeChanged = { /* ... */ },
+            label = "Score",
+            minRange = 0,
+            maxRange = 10,
+            modifier = Modifier
+                .fillMaxWidth()
+                .padding(top = 16.dp)
+        )
+    }
+}

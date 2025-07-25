@@ -1,0 +1,104 @@
+[
+  {
+    "id": "SES",
+    "name": "Family Socioeconomic Status (SES)",
+    "description": "Please select your family's socioeconomic group based on income quintiles (Quintile 5 = Wealthiest).",
+    "options": {
+      "Wealthiest (Quintile 5)": 0.0,
+      "Quintile 4": 0.8,
+      "Quintile 3 (Average)": 1.5,
+      "Quintile 2": 2.2,
+      "Poorest (Quintile 1)": 3.0
+    }
+  },
+  {
+    "id": "ParentalEducationLevel",
+    "name": "Parental Education Level",
+    "description": "Please select the highest level of education achieved by your parents/guardians.",
+    "options": {
+      "University degree or higher": 0.0,
+      "Less than university degree (e.g., High School Diploma)": 1.2
+    }
+  },
+  {
+    "id": "ToothBrushingFrequency",
+    "name": "Tooth Brushing Frequency",
+    "description": "How often do you usually brush your teeth per day?",
+    "options": {
+      "Twice a day or more": 0.0,
+      "Less than twice a day (e.g., once or irregularly)": 2.0
+    }
+  },
+  {
+    "id": "Flossing",
+    "name": "Dental Floss Use",
+    "description": "How often do you use dental floss?",
+    "options": {
+      "Regularly (daily or most days)": 0.0,
+      "Irregularly or never": 1.0
+    }
+  },
+  {
+    "id": "MouthwashUse",
+    "name": "Mouthwash Use",
+    "description": "Do you regularly use mouthwash?",
+    "options": {
+      "Yes, regularly": 0.0,
+      "No, or irregularly": 0.8
+    }
+  },
+  {
+    "id": "AgeGroup",
+    "name": "Age Group",
+    "description": "Please select your age group.",
+    "options": {
+      "13-15 years": 0.0,
+      "16-18 years": 0.5
+    }
+  },
+  {
+    "id": "Gender",
+    "name": "Gender",
+    "description": "Please select your gender.",
+    "options": {
+      "Male": 0.0,
+      "Female": 0.3
+    }
+  },
+  {
+    "id": "BMI",
+    "name": "Body Mass Index (BMI)",
+    "description": "How do you assess your Body Mass Index (BMI)? (Consider asking your parents or using an online calculator for teens)",
+    "options": {
+      "Normal or Higher than Normal": 0.0,
+      "Lower than Normal (Underweight)": 0.7
+    }
+  },
+  {
+    "id": "Smoking",
+    "name": "Smoking Status",
+    "description": "Do you currently smoke cigarettes or vape?",
+    "options": {
+      "No, I don't smoke": 0.0,
+      "Yes, I smoke/vape": 3.0
+    }
+  },
+  {
+    "id": "AlcoholUse",
+    "name": "Alcohol Consumption",
+    "description": "Do you consume alcohol?",
+    "options": {
+      "No, I don't consume alcohol": 0.0,
+      "Yes, I consume alcohol (even occasionally)": 1.0
+    }
+  },
+  {
+    "id": "SugaryDrinks",
+    "name": "Sugary Drink Consumption",
+    "description": "How often do you consume sugary drinks (soda, sweetened juices, energy drinks)?",
+    "options": {
+      "Rarely or never": 0.0,
+      "Frequently (daily or most days)": 1.8
+    }
+  }
+]
