@@ -5,6 +5,7 @@ import android.util.Log
 import androidx.appcompat.app.AppCompatDelegate
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material.icons.filled.Info
 import androidx.compose.material.icons.filled.Language
 import androidx.compose.material3.DropdownMenu
@@ -26,6 +27,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.core.os.LocaleListCompat
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
+import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.unitest.MainViewModel
 import com.example.unitest.R
@@ -57,6 +59,18 @@ fun AppNavigation() {
         topBar = {
             TopAppBar(
                 title = { Text(stringResource(id = R.string.app_name)) },
+                navigationIcon = {
+                    if (navController.currentBackStackEntryAsState().value?.destination?.route != "home") {
+                        IconButton(onClick = { navController.navigateUp() }) {
+                            Icon(
+                                imageVector = Icons.AutoMirrored.Filled.ArrowBack,
+                                contentDescription = stringResource(
+                                    R.string.back
+                                )
+                            )
+                        }
+                    }
+                },
                 actions = {
                     // Language Selector
                     var languageMenuExpanded by remember { mutableStateOf(false) }
