@@ -30,6 +30,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
 import com.example.unitest.MainViewModel
+import com.example.unitest.NullIndicatorWarningDialog
 import com.example.unitest.R
 import org.koin.androidx.compose.koinViewModel
 
@@ -54,6 +55,14 @@ fun AppNavigation() {
     var currentLanguage by remember { mutableStateOf("En") } // Default language
     val viewModel: MainViewModel = koinViewModel()
     val context = LocalContext.current
+
+    if(viewModel.showNullIndicatorWarningDialog) {
+        NullIndicatorWarningDialog(
+            {viewModel.closeNullIndicatorWarningDialog()},
+            viewModel.nullIndicatorName
+        )
+
+    }
 
     Scaffold(
         topBar = {

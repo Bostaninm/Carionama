@@ -51,23 +51,45 @@ fun Select(
                 style = MaterialTheme.typography.bodySmall
             )
 
-            Row(
-                horizontalArrangement = Arrangement.spacedBy(8.dp),
-                verticalAlignment = Alignment.Top,
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .height(IntrinsicSize.Min)
-                    .padding(top = 8.dp)
-            ) {
-                indicator.options.forEach { option ->
-                    Option(
-                        modifier = Modifier
-                            .weight(1f)
-                            .fillMaxHeight(1f),
-                        option = option,
-                        onClick = { onSelect(option) },
-                        selected = (option == selected)
-                    )
+            if (indicator.options.size <= 3) {
+                Row(
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    verticalAlignment = Alignment.Top,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(IntrinsicSize.Min)
+                        .padding(top = 8.dp)
+                ) {
+                    indicator.options.forEach { option ->
+                        Option(
+                            modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight(1f),
+                            option = option,
+                            onClick = { onSelect(option) },
+                            selected = (option == selected)
+                        )
+                    }
+                }
+            } else {
+                Column(
+                    verticalArrangement = Arrangement.spacedBy(8.dp),
+                    horizontalAlignment = Alignment.CenterHorizontally,
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(IntrinsicSize.Min)
+                        .padding(top = 8.dp)
+                ) {
+                    indicator.options.forEach { option ->
+                        Option(
+                            modifier = Modifier
+                                .weight(1f)
+                                .fillMaxHeight(1f),
+                            option = option,
+                            onClick = { onSelect(option) },
+                            selected = (option == selected)
+                        )
+                    }
                 }
             }
         }

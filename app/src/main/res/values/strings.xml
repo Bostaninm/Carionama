@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">UniTest2</string>
+    <string name="app_name">CarioNama</string>
     <string name="english">English</string>
     <string name="farsi">Farsi</string>
     <string name="language">Language</string>
@@ -16,6 +16,15 @@
     <string name="back">Back</string>
     <string name="about_page_description">Welcome! This application is designed to help you understand potential risk factors associated with developing dental caries (cavities).\n\nBy answering a series of questions based on established indicators, this app provides an informational score. Our goal is to empower you with knowledge and encourage proactive steps towards maintaining good periodontal health and preventing cavities.\n\nPlease Note: This app is for informational purposes only and does not provide medical advice. Always consult with a qualified healthcare professional for any health concerns or before making any decisions related to your health.</string>
     <string name="about_this_app">About This App</string>
+    <string name="warning_sign">Warning Sign</string>
+    <string name="warning_for_age_group_18_35">Warning for age group 19-35</string>
+    <string name="age_group_young_warning">Risk score is approximated using data from the 35+ age group due to data limitations. Results are an estimate and may not be fully precise for your profile.</string>
+    <string name="cancel">Cancel</string>
+    <string name="proceed">Proceed</string>
+    <string name="missing_information">Missing Information</string>
+    <string name="null_indicator_warning_message_with_indicator_name">We couldn\'t proceed because information for the indicator \"%1$s\" is missing. Please ensure all required fields are completed.</string>
+    <string name="null_indicator_warning_message">We couldn\'t proceed because some required information is missing. Please ensure all required fields are completed.</string>
+    <string name="ok">OK</string>
 
 
 </resources>

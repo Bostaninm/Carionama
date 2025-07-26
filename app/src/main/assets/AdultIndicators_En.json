@@ -153,60 +153,6 @@
     ]
   },
   {
-    "id": "MouthwashUseConditional",
-    "name": "Mouthwash Use (Only if not hypertensive)",
-    "description": "If you are not hypertensive, do you use mouthwash?",
-    "options": [
-      {
-        "id": 1,
-        "description": "Yes, I use it (and I am not hypertensive)",
-        "value": 0.0
-      },
-      {
-        "id": 2,
-        "description": "No, I don't use it (and I am not hypertensive)",
-        "value": 1.5
-      },
-      {
-        "id": 3,
-        "description": "I am hypertensive (this question does not apply to me)",
-        "value": 0.0
-      }
-    ]
-  },
-  {
-    "id": "SES",
-    "name": "Socioeconomic Status (SES)",
-    "description": "Please select your socioeconomic group based on income quintiles (Quintile 5 = Wealthiest).",
-    "options": [
-      {
-        "id": 1,
-        "description": "Wealthiest (Quintile 5)",
-        "value": 0.0
-      },
-      {
-        "id": 2,
-        "description": "Quintile 4",
-        "value": 1.234
-      },
-      {
-        "id": 3,
-        "description": "Quintile 3 (Average)",
-        "value": 2.098
-      },
-      {
-        "id": 4,
-        "description": "Quintile 2",
-        "value": 2.919
-      },
-      {
-        "id": 5,
-        "description": "Poorest (Quintile 1)",
-        "value": 3.933
-      }
-    ]
-  },
-  {
     "id": "AgeGroup",
     "name": "Age Group",
     "description": "Please select your age group.",
@@ -252,6 +198,38 @@
         "id": 3,
         "description": "Divorced or Widowed",
         "value": 1.770
+      }
+    ]
+  },
+  {
+    "id": "SES",
+    "name": "Socioeconomic Status (SES)",
+    "description": "Please select your socioeconomic group based on income quantiles (Quantile 5 = Wealthiest).",
+    "options": [
+      {
+        "id": 1,
+        "description": "Wealthiest (Quantile 5)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Above Average (Quantile 4)",
+        "value": 1.234
+      },
+      {
+        "id": 3,
+        "description": "Average (Quantile 3)",
+        "value": 2.098
+      },
+      {
+        "id": 4,
+        "description": "Below Average (Quantile 2)",
+        "value": 2.919
+      },
+      {
+        "id": 5,
+        "description": "Poorest (Quantile 1)",
+        "value": 3.933
       }
     ]
   }

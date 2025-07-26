@@ -18,15 +18,15 @@ class ReadIndicatorsData : KoinComponent {
     fun readJsonData(localeCode: String): Pair<List<Indicator>, List<Indicator>> {
         val context: Context by inject()
         var adultJsonString =
-            context.assets.open("AdultIndicators.json").bufferedReader().use { it.readText() }
+            context.assets.open("AdultIndicators_En.json").bufferedReader().use { it.readText() }
         var teenJsonString =
-            context.assets.open("TeenIndicators.json").bufferedReader().use { it.readText() }
+            context.assets.open("TeenIndicators_En.json").bufferedReader().use { it.readText() }
         if (localeCode == "fa") {
             adultJsonString =
-                context.assets.open("AdultIndicators_fa.json").bufferedReader()
+                context.assets.open("AdultIndicators_Fa.json").bufferedReader()
                     .use { it.readText() }
             teenJsonString =
-                context.assets.open("TeenIndicators.json").bufferedReader().use { it.readText() }
+                context.assets.open("TeenIndicators_Fa.json").bufferedReader().use { it.readText() }
         }
         val adultIndicators: List<Indicator> = gson.fromJson(adultJsonString, indicatorListType)
         val teenIndicators: List<Indicator> = gson.fromJson(teenJsonString, indicatorListType)

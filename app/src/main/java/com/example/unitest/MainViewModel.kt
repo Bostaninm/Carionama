@@ -17,6 +17,7 @@ class MainViewModel : ViewModel(), KoinComponent {
         Log.d(TAG, "Initializing MainViewModel")
     }
 
+
     var userAge by mutableStateOf(0)
 
     var userBMI by mutableStateOf(0f)
@@ -31,13 +32,37 @@ class MainViewModel : ViewModel(), KoinComponent {
         private set
     var showChartDialog by mutableStateOf(false)
         private set
+    var showAgeGroupWarning by mutableStateOf(false)
+        private set
+    var showNullIndicatorWarningDialog by mutableStateOf(false)
+        private set
+    var nullIndicatorName by mutableStateOf<String?>(null)
+    private set
 
     fun resetSelection() {
         selection.clear()
     }
 
+    fun showAgeGroupWarning() {
+        showAgeGroupWarning = true
+    }
+
+    fun closeAgeGroupWarning() {
+        showAgeGroupWarning = false
+    }
+
     fun setSelection(key: String, value: String) {
         selection[key] = value
+    }
+
+    fun showNullIndicatorWarningDialog(indicatorName: String?) {
+        showNullIndicatorWarningDialog = true;
+        this.nullIndicatorName = indicatorName
+    }
+
+    fun closeNullIndicatorWarningDialog() {
+        showNullIndicatorWarningDialog = false;
+        this.nullIndicatorName = null
     }
 
     fun showIndicatorDialog() {
@@ -100,6 +125,7 @@ class MainViewModel : ViewModel(), KoinComponent {
 
         indicators?.forEach { indicator ->
             if (selection[indicator.id] == null) {
+                showNullIndicatorWarningDialog(indicator.name)
                 Log.i(TAG, "Null Indicator ${indicator.id}")
                 return false
             }

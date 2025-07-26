@@ -35,13 +35,25 @@ fun HomeScreen(
     val indicatorsData: Pair<List<Indicator>, List<Indicator>> =
         koinInject { parametersOf(appLocale) }
 
+    if (viewModel.showAgeGroupWarning) {
+        AgeGroupWarningDialog(onClose = { viewModel.closeAgeGroupWarning() }, onProceed = {
+            val adultIndicators = indicatorsData.first
+            viewModel.enableAdultForm(adultIndicators)
+            navController.navigate("adult")
+            viewModel.closeAgeGroupWarning()
+        })
+    }
     HomeContent { validAge ->
         if (validAge != null) {
             viewModel.userAge = validAge
             if (validAge > 18) {
-                val adultIndicators = indicatorsData.first
-                viewModel.enableAdultForm(adultIndicators)
-                navController.navigate("adult")
+                if (validAge <= 35) {
+                    viewModel.showAgeGroupWarning()
+                } else {
+                    val adultIndicators = indicatorsData.first
+                    viewModel.enableAdultForm(adultIndicators)
+                    navController.navigate("adult")
+                }
             } else {
                 val teenIndicators = indicatorsData.second
                 viewModel.enableTeenForm(teenIndicators)
@@ -72,7 +84,7 @@ fun HomeContent(onSubmit: (validAge: Int?) -> Unit) {
                 onValueChange = { inputAge = it },
                 onNumberInRangeChanged = { validAge = it },
                 label = stringResource(R.string.age),
-                minRange = 1,
+                minRange = 12,
                 maxRange = 99,
                 modifier = Modifier.width(256.dp)
             )

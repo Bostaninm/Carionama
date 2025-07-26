@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">شاخص سلامت دندان</string>
+    <string name="app_name">کاریونما</string>
     <string name="english">انگلیسی</string>
     <string name="farsi">فارسی</string>
     <string name="language">زبان</string>
@@ -17,6 +17,15 @@
     <string name="back">بازگشت</string>
     <string name="about_page_description">خوش آمدید! این برنامه برای کمک به شما در درک عوامل خطرساز بالقوه مرتبط با ایجاد پوسیدگی دندان طراحی شده است.\n\nبا پاسخ به مجموعه‌ای از سوالات مبتنی بر شاخص‌های معتبر، این برنامه یک امتیاز اطلاعاتی ارائه می‌دهد. هدف ما توانمندسازی شما با دانش و تشویق به برداشتن گام‌های پیشگیرانه به سوی حفظ سلامت پریودنتال (لثه و بافت‌های اطراف دندان) و پیشگیری از پوسیدگی دندان است.\n\nلطفا توجه داشته باشید: این برنامه فقط برای اهداف اطلاعاتی است و مشاوره پزشکی ارائه نمی‌دهد. همیشه برای هرگونه نگرانی سلامتی یا قبل از تصمیم‌گیری در مورد سلامتی خود با یک متخصص واجد شرایط مشورت کنید.</string>
     <string name="about_this_app">درباره ی این برنامه</string>
+    <string name="warning_sign">علامت خطر</string>
+    <string name="warning_for_age_group_18_35">هشدار برای گروه سنی 19-35 سال</string>
+    <string name="age_group_young_warning">"امتیاز خطر با استفاده از داده‌های گروه سنی ۳۵+ به دلیل محدودیت‌های داده، تخمین زده شده است. نتایج یک برآورد هستند و ممکن است برای پروفایل شما کاملاً دقیق نباشند. "</string>
+    <string name="cancel">لغو</string>
+    <string name="proceed">ادامه</string>
+    <string name="missing_information">اطلاعات ناقص</string>
+    <string name="null_indicator_warning_message_with_indicator_name">به دلیل عدم وجود اطلاعات برای شاخص «%1$s»، امکان ادامه وجود ندارد. لطفاً از تکمیل تمام فیلدهای ضروری اطمینان حاصل کنید.</string>
+    <string name="null_indicator_warning_message">به دلیل ناقص بودن برخی اطلاعات ضروری، امکان ادامه وجود ندارد. لطفاً از تکمیل تمام فیلدهای ضروری اطمینان حاصل کنید.</string>
+    <string name="ok">باشه</string>
 
 
 </resources>
