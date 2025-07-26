@@ -5,7 +5,6 @@
     <string name="language">Language</string>
     <string name="about">About</string>
     <string name="bmi">BMI</string>
-    <string name="about_page_description">This is the About Page.</string>
     <string name="age">Age</string>
     <string name="submit">Submit</string>
     <string name="done">Done</string>
@@ -15,4 +14,8 @@
     <string name="height">Height</string>
     <string name="weight">Weight</string>
     <string name="back">Back</string>
+    <string name="about_page_description">Welcome! This application is designed to help you understand potential risk factors associated with developing dental caries (cavities).\n\nBy answering a series of questions based on established indicators, this app provides an informational score. Our goal is to empower you with knowledge and encourage proactive steps towards maintaining good periodontal health and preventing cavities.\n\nPlease Note: This app is for informational purposes only and does not provide medical advice. Always consult with a qualified healthcare professional for any health concerns or before making any decisions related to your health.</string>
+    <string name="about_this_app">About This App</string>
+
+
 </resources>

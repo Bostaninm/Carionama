@@ -6,7 +6,6 @@
     <string name="language">زبان</string>
     <string name="about">درباره ی برنامه</string>
     <string name="bmi">شاخص توده بدنی</string>
-    <string name="about_page_description">مشخصات برنامه</string>
     <string name="age">سن</string>
     <string name="submit">ثبت</string>
     <string name="done">اتمام</string>
@@ -15,4 +14,9 @@
     <string name="invalid_number">عدد غیرمجاز</string>
     <string name="height">قد</string>
     <string name="weight">وزن</string>
+    <string name="back">بازگشت</string>
+    <string name="about_page_description">خوش آمدید! این برنامه برای کمک به شما در درک عوامل خطرساز بالقوه مرتبط با ایجاد پوسیدگی دندان طراحی شده است.\n\nبا پاسخ به مجموعه‌ای از سوالات مبتنی بر شاخص‌های معتبر، این برنامه یک امتیاز اطلاعاتی ارائه می‌دهد. هدف ما توانمندسازی شما با دانش و تشویق به برداشتن گام‌های پیشگیرانه به سوی حفظ سلامت پریودنتال (لثه و بافت‌های اطراف دندان) و پیشگیری از پوسیدگی دندان است.\n\nلطفا توجه داشته باشید: این برنامه فقط برای اهداف اطلاعاتی است و مشاوره پزشکی ارائه نمی‌دهد. همیشه برای هرگونه نگرانی سلامتی یا قبل از تصمیم‌گیری در مورد سلامتی خود با یک متخصص واجد شرایط مشورت کنید.</string>
+    <string name="about_this_app">درباره ی این برنامه</string>
+
+
 </resources>
