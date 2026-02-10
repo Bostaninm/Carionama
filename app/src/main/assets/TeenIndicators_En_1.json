@@ -1,0 +1,180 @@
+[
+  {
+    "id": "AgeGroup",
+    "name": "Age",
+    "description": "Please select your current age.",
+    "options": [
+      {
+        "id": 1,
+        "description": "12",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "13",
+        "value": 0.4
+      },
+      {
+        "id": 3,
+        "description": "14",
+        "value": 0.8
+      },
+      {
+        "id": 4,
+        "description": "15",
+        "value": 1.2
+      },
+      {
+        "id": 5,
+        "description": "16",
+        "value": 1.6
+      },
+      {
+        "id": 6,
+        "description": "17",
+        "value": 2.0
+      },
+      {
+        "id": 7,
+        "description": "18",
+        "value": 2.4
+      }
+    ]
+  },
+  {
+    "id": "SES",
+    "name": "Socioeconomic Status (SES)",
+    "description": "How would you describe your family's socioeconomic status?",
+    "options": [
+      {
+        "id": 1,
+        "description": "High SES",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Low SES",
+        "value": 0.74
+      }
+    ]
+  },
+  {
+    "id": "ParentalEducation",
+    "name": "Parental Education Level",
+    "description": "What is the highest level of education achieved by your parents/guardians?",
+    "options": [
+      {
+        "id": 1,
+        "description": "University degree or higher (Academic)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Less than university degree",
+        "value": 1.07
+      }
+    ]
+  },
+  {
+    "id": "ParentalOccupation",
+    "name": "Parental Occupation Status",
+    "description": "What is the primary occupation status of your parents/guardians?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Employed",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Unemployed or Irregularly Employed",
+        "value": 0.67
+      }
+    ]
+  },
+  {
+    "id": "FamilyIncome",
+    "name": "Family Income",
+    "description": "How would you describe your family's primary source of income?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Regular Salary / Stable Income",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Low or Unstable Income",
+        "value": 0.08
+      }
+    ]
+  },
+  {
+    "id": "ToothBrushingFrequency",
+    "name": "Tooth Brushing Frequency",
+    "description": "How often do you usually brush your teeth per day?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Twice a day or more",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Less than twice a day (e.g., once or irregularly)",
+        "value": 1.05
+      }
+    ]
+  },
+  {
+    "id": "CarbohydrateIntake",
+    "name": "Sugary Food & Drink Intake",
+    "description": "How often do you consume sugary foods or drinks (like sweets, soda, juice) between meals?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Rarely (e.g., once a day or less)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Frequently (e.g., several times a day)",
+        "value": 2.29
+      }
+    ]
+  },
+  {
+    "id": "Region",
+    "name": "Region of Residence",
+    "description": "Do you primarily live in an urban or rural area?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Urban",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Rural",
+        "value": 0.46
+      }
+    ]
+  },
+  {
+    "id": "DentalVisits",
+    "name": "Dental Visits Frequency",
+    "description": "How often do you visit a dentist for a check-up (not for pain)?",
+    "options": [
+      {
+        "id": 1,
+        "description": "Regularly (e.g., once a year or more)",
+        "value": 0.0
+      },
+      {
+        "id": 2,
+        "description": "Irregularly or only when in pain",
+        "value": 0.07
+      }
+    ]
+  }
+]

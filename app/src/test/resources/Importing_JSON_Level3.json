@@ -1,0 +1,343 @@
+[
+  {
+    "id": "EducationLevel",
+    "name": "Education Level",
+    "description": "Please select your highest level of education.",
+    "options": [
+      {
+        "id": 1,
+        "description": "University degree or higher",
+        "value": 0.0,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Less than university degree (e.g., High School Diploma)",
+        "value": 1.5,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "MaritalStatus",
+    "name": "Marital Status",
+    "description": "Please select your marital status.",
+    "options": [
+      {
+        "id": 1,
+        "description": "Single",
+        "value": 0.0,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Married",
+        "value": 1.644,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "Divorced or Widowed",
+        "value": 1.770,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SES",
+    "name": "Socioeconomic Status (SES)",
+    "description": "Please select your socioeconomic group based on income quantiles (Quantile 5 = Wealthiest).",
+    "options": [
+      {
+        "id": 1,
+        "description": "Wealthiest (Quantile 5)",
+        "value": 0.0,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "Above Average (Quantile 4)",
+        "value": 1.234,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "Average (Quantile 3)",
+        "value": 2.098,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 4,
+        "description": "Below Average (Quantile 2)",
+        "value": 2.919,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      },
+      {
+        "id": 5,
+        "description": "Poorest (Quantile 1)",
+        "value": 3.933,
+        "relations": [
+        {
+        "id":"EducationLevel",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0}
+        ]
+        },
+        {
+        "id":"MaritalStatus",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0}
+        ]
+        },
+        {
+        "id":"SES",
+        "relation": [
+            {"optionID": 1, "value":0},
+            {"optionID": 2, "value":0},
+            {"optionID": 3, "value":0},
+            {"optionID": 4, "value":0},
+            {"optionID": 4, "value":0}
+        ]
+        }
+        ]
+      }
+    ]
+  }
+]

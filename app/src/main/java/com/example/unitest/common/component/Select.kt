@@ -106,8 +106,8 @@ fun SelectPreview() {
             "Socioeconomic Status (SES)",
             "Please select your socioeconomic group based on income quintiles (Quintile 5 = Wealthiest).",
             listOf(
-                IndicatorOption("0", "Wealthiest (Quintile 5)", 0f),
-                IndicatorOption("1", "Quintile 4", 1.234f),
+                IndicatorOption("0", "Wealthiest (Quintile 5)", 0f, relations = listOf()),
+                IndicatorOption("1", "Quintile 4", 1.234f, relations = listOf()),
 //                IndicatorOption("Quintile 3 (Average)", 2.098f),
 //                IndicatorOption("Quintile 2", 2.919f),
 //                IndicatorOption("Poorest (Quintile 1)", 3.933f)

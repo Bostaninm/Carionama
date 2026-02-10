@@ -6,6 +6,7 @@ import androidx.compose.runtime.mutableStateMapOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import com.example.unitest.util.ReadIndicatorsData
 import com.example.unitest.util.Util
 import org.koin.core.component.KoinComponent
 
@@ -16,7 +17,6 @@ class MainViewModel : ViewModel(), KoinComponent {
     init {
         Log.d(TAG, "Initializing MainViewModel")
     }
-
 
     var userAge by mutableStateOf(0)
 
@@ -37,7 +37,7 @@ class MainViewModel : ViewModel(), KoinComponent {
     var showNullIndicatorWarningDialog by mutableStateOf(false)
         private set
     var nullIndicatorName by mutableStateOf<String?>(null)
-    private set
+        private set
 
     fun resetSelection() {
         selection.clear()
@@ -56,12 +56,12 @@ class MainViewModel : ViewModel(), KoinComponent {
     }
 
     fun showNullIndicatorWarningDialog(indicatorName: String?) {
-        showNullIndicatorWarningDialog = true;
+        showNullIndicatorWarningDialog = true
         this.nullIndicatorName = indicatorName
     }
 
     fun closeNullIndicatorWarningDialog() {
-        showNullIndicatorWarningDialog = false;
+        showNullIndicatorWarningDialog = false
         this.nullIndicatorName = null
     }
 
@@ -123,7 +123,7 @@ class MainViewModel : ViewModel(), KoinComponent {
             }
         }
 
-        //TODO:: Make this more modular and value dependent (Right now it depeneds on the order of option in json file 0 being less than 18.5
+        //TODO:: Make this more modular and value dependent (Right now it depends on the order of option in json file 0 being less than 18.5
         indicators?.find { it.id == "BMI" }?.let { bmiIndicator ->
             if (userBMI < 18.5) {
                 selection[bmiIndicator.id] = bmiIndicator.options[0].id
@@ -144,13 +144,16 @@ class MainViewModel : ViewModel(), KoinComponent {
     }
 
     fun showChartDialog() {
-        val nonNullSelection = buildMap<String, IndicatorOption> {
+        val nonNullSelection = buildList<Selection> {
             for (s in selection) {
                 val indicator = indicators?.find { it.id == s.key }
                 val option = indicator?.options?.find { it.id == s.value }
-                put(
-                    indicator?.name ?: error("Indicator with id of ${s.key} was not found!"),
-                    option ?: error("Empty indicator ${s.key}")
+                add(
+                    Selection(
+                        indicator?.id ?: error("Indicator with id of ${s.key} was not found!"),
+                        indicator.name,
+                        option ?: error("Empty indicator ${s.key}")
+                    )
                 )
             }
         }
