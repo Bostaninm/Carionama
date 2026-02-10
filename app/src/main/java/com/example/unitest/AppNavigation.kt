@@ -34,7 +34,11 @@ import com.example.unitest.NullIndicatorWarningDialog
 import com.example.unitest.R
 import org.koin.androidx.compose.koinViewModel
 
-fun setAndPersistLocale(context: Context, lang: String) {
+fun setAndPersistLocale(
+    context: Context,
+    lang: String,
+    triggerViewModelDataChange: (String) -> Unit
+) {
     val sharedPrefs = context.getSharedPreferences("AppSettings", Activity.MODE_PRIVATE)
     sharedPrefs.edit().putString("AppLocale", lang).apply()
 
@@ -42,26 +46,23 @@ fun setAndPersistLocale(context: Context, lang: String) {
     Log.d("LocaleDebug", "appLocale ::" + appLocale.toLanguageTags())
     AppCompatDelegate.setApplicationLocales(appLocale)
 
+    triggerViewModelDataChange(lang)
 }
 
 @SuppressLint("LocalContextConfigurationRead")
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun AppNavigation() {
-
-    val currentContext = LocalContext.current
-
     val navController = rememberNavController()
     var currentLanguage by remember { mutableStateOf("En") } // Default language
     val viewModel: MainViewModel = koinViewModel()
     val context = LocalContext.current
 
-    if(viewModel.showNullIndicatorWarningDialog) {
+    if (viewModel.showNullIndicatorWarningDialog) {
         NullIndicatorWarningDialog(
-            {viewModel.closeNullIndicatorWarningDialog()},
+            { viewModel.closeNullIndicatorWarningDialog() },
             viewModel.nullIndicatorName
         )
-
     }
 
     Scaffold(
@@ -97,12 +98,12 @@ fun AppNavigation() {
                             text = { Text(stringResource(id = R.string.english)) },
                             onClick = {
                                 currentLanguage = "en"
-                                setAndPersistLocale(context, "en")
-                                Log.d(
-                                    "LocaleDebug",
-                                    "Composable Locale: ${currentContext.resources.configuration.locales[0]}"
-                                )
-                                // Add logic here to change app locale if needed
+                                setAndPersistLocale(
+                                    context,
+                                    "en",
+                                ) { lang ->
+                                    viewModel.changeIndicatorLanguage(lang)
+                                }
                                 languageMenuExpanded = false
                             }
                         )
@@ -110,19 +111,12 @@ fun AppNavigation() {
                             text = { Text(stringResource(id = R.string.farsi)) },
                             onClick = {
                                 currentLanguage = "fa"
-                                setAndPersistLocale(context, "fa")
-
-//                                val locale = Locale("fa")
-//                                val resource = context.resources
-//                                val configuration = resource.configuration
-//                                configuration.setLayoutDirection(locale)
-//                                resource.updateConfiguration(configuration, resource.displayMetrics)
-//
-//                                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N)
-//                                    context.createConfigurationContext(configuration)
-                                val activity = context as? Activity
-                                activity?.recreate()
-                                // Add logic here to change app locale if needed
+                                setAndPersistLocale(
+                                    context,
+                                    "fa",
+                                ) { lang ->
+                                    viewModel.changeIndicatorLanguage(lang)
+                                }
                                 languageMenuExpanded = false
                             }
                         )

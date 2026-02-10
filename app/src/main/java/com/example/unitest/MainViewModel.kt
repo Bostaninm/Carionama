@@ -73,6 +73,15 @@ class MainViewModel : ViewModel(), KoinComponent {
         showIndicatorDialog = false
     }
 
+    fun changeIndicatorLanguage(lang: String) {
+        val indicatorsData: Pair<List<Indicator>, List<Indicator>> =
+            ReadIndicatorsData().readJsonData(lang)
+        if (userAge > 18)
+            indicators = indicatorsData.first
+        else
+            indicators = indicatorsData.second
+    }
+
     fun validateInputs(): Boolean {
         Log.i(TAG, "Validating Inputs")
         if (userAge in 12..99) {
