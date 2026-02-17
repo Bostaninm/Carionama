@@ -1,0 +1,343 @@
+[
+  {
+    "id": "EducationLevel",
+    "name": "سطح تحصیلات",
+    "description": "لطفاً بالاترین سطح تحصیلات خود را انتخاب کنید.",
+    "options": [
+      {
+        "id": 1,
+        "description": "مدرک دانشگاهی یا بالاتر",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "کمتر از مدرک دانشگاهی (مثلاً دیپلم دبیرستان)",
+        "value": 1.5,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "MaritalStatus",
+    "name": "وضعیت تأهل",
+    "description": "لطفاً وضعیت تأهل خود را انتخاب کنید.",
+    "options": [
+      {
+        "id": 1,
+        "description": "مجرد",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "متأهل",
+        "value": 1.644,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "مطلقه یا بیوه",
+        "value": 1.770,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "SES",
+    "name": "وضعیت اجتماعی-اقتصادی (SES)",
+    "description": "لطفاً گروه اجتماعی-اقتصادی خود را بر اساس چندک‌های درآمدی انتخاب کنید (چندک ۵ = ثروتمندترین).",
+    "options": [
+      {
+        "id": 1,
+        "description": "ثروتمندترین (چندک ۵)",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "بالاتر از متوسط (چندک ۴)",
+        "value": 1.234,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "متوسط (چندک ۳)",
+        "value": 2.098,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "description": "پایین‌تر از متوسط (چندک ۲)",
+        "value": 2.919,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 5,
+        "description": "فقیرترین (چندک ۱)",
+        "value": 3.933,
+        "relations": [
+          {
+            "id": "EducationLevel",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MaritalStatus",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 }
+            ]
+          },
+          {
+            "id": "SES",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

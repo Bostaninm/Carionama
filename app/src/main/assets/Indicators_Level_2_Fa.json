@@ -1,0 +1,1505 @@
+[
+  {
+    "id": "BMI",
+    "name": "شاخص توده بدنی (BMI)",
+    "description": "چگونه شاخص توده بدنی (BMI) خود را ارزیابی می‌کنید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "کمتر از نرمال (کمبود وزن)",
+        "value": 1.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0.54 },
+              { "optionID": 2, "value": 0.2 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "نرمال یا بالاتر از نرمال",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Gender",
+    "name": "جنسیت",
+    "description": "لطفاً جنسیت خود را انتخاب کنید.",
+    "options": [
+      {
+        "id": 1,
+        "description": "مرد",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "زن",
+        "value": 1.137,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Smoking",
+    "name": "وضعیت سیگار کشیدن",
+    "description": "آیا در حال حاضر سیگار می‌کشید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "خیر، سیگار نمی‌کشم",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "بله، سیگار می‌کشم",
+        "value": 4.081,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "AlcoholUse",
+    "name": "مصرف الکل",
+    "description": "آیا الکل مصرف می‌کنید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "خیر، مصرف نمی‌کنم",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "بله، مصرف می‌کنم",
+        "value": 0.401,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "ToothBrushingFrequency",
+    "name": "دفعات مسواک زدن",
+    "description": "معمولاً چند بار در روز مسواک می‌زنید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "دو بار در روز یا بیشتر",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "کمتر از دو بار در روز (مثلاً یک بار یا نامنظم)",
+        "value": 2.5,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Flossing",
+    "name": "استفاده از نخ دندان",
+    "description": "آیا به طور منظم از نخ دندان استفاده می‌کنید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "بله، به طور منظم استفاده می‌کنم",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "خیر، استفاده نمی‌کنم یا نامنظم استفاده می‌کنم",
+        "value": 1.5,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "Hypertension",
+    "name": "فشار خون بالا (Hypertension)",
+    "description": "آیا فشار خون بالا دارید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "خیر، فشار خون بالا ندارم",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "بله، فشار خون بالا دارم",
+        "value": 2.18,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "MouthwashUse",
+    "name": "استفاده از دهانشویه",
+    "description": "آیا به طور منظم از دهانشویه استفاده می‌کنید؟",
+    "options": [
+      {
+        "id": 1,
+        "description": "بله، به طور منظم",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "خیر، یا نامنظم",
+        "value": 0.8,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "AgeGroup",
+    "name": "گروه سنی",
+    "description": "لطفاً گروه سنی خود را انتخاب کنید.",
+    "options": [
+      {
+        "id": 1,
+        "description": "35",
+        "value": 0.0,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 2,
+        "description": "45",
+        "value": 4.071,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 3,
+        "description": "55",
+        "value": 8.572,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      },
+      {
+        "id": 4,
+        "description": "65",
+        "value": 11.311,
+        "relations": [
+          {
+            "id": "BMI",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Gender",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Smoking",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AlcoholUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "ToothBrushingFrequency",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Flossing",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "Hypertension",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "MouthwashUse",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 }
+            ]
+          },
+          {
+            "id": "AgeGroup",
+            "relation": [
+              { "optionID": 1, "value": 0 },
+              { "optionID": 2, "value": 0 },
+              { "optionID": 3, "value": 0 },
+              { "optionID": 4, "value": 0 }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

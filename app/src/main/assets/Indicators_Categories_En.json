@@ -1,0 +1,71 @@
+[
+  {
+    "id": "MicroOrganisms",
+    "name": "Micro-Organisms",
+    "related_indicators_id": [
+      "ToothBrushingFrequency",
+      "Flossing",
+      "MouthwashUse"
+    ],
+    "hsl_ranges": {
+      "hue": {
+        "min": 15,
+        "max": 35
+      },
+      "saturation": {
+        "min": 90,
+        "max": 100
+      },
+      "lightness": {
+        "min": 50,
+        "max": 60
+      }
+    }
+  },
+  {
+    "id": "Host",
+    "name": "Host",
+    "related_indicators_id": [
+      "BMI",
+      "Gender",
+      "Smoking",
+      "Hypertension",
+      "AgeGroup"
+    ],
+    "hsl_ranges": {
+      "hue": {
+        "min": 100,
+        "max": 120
+      },
+      "saturation": {
+        "min": 80,
+        "max": 95
+      },
+      "lightness": {
+        "min": 40,
+        "max": 50
+      }
+    }
+  },
+  {
+    "id": "Substrate",
+    "name": "Substrate",
+    "related_indicators_id": [
+      "AlcoholUse"
+    ],
+    "hsl_ranges": {
+      "hue": {
+        "min": 210,
+        "max": 230
+      },
+      "saturation": {
+        "min": 85,
+        "max": 100
+      },
+      "lightness": {
+        "min": 45,
+        "max": 55
+      }
+    }
+  }
+]
