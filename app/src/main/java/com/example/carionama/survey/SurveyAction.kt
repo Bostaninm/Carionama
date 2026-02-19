@@ -11,7 +11,13 @@ sealed interface SurveyAction {
     data class OnLanguageSelected(val language: CarionamaLocals) : SurveyAction
     object OnLanguageIconClicked : SurveyAction
     object OnLanguageMenuDismissed : SurveyAction
-    data class OnBMIChange(val bmiView: IndicatorView, val bmi: Float) : SurveyAction
+    data class OnBMIChange(
+        val bmiView: IndicatorView,
+        val height: Float,
+        val weight: Float,
+        val bmi: Float
+    ) : SurveyAction
+
     data class OnIndicatorOptionSelected(
         val indicatorView: IndicatorView,
         val option: IndicatorOption
@@ -20,5 +26,5 @@ sealed interface SurveyAction {
 
     data object OnActionButtonClicked : SurveyAction
     data object OnChartDialogDismissed : SurveyAction
-    data object DismissWarningDialog : SurveyAction
+    data object OnDismissWarningDialog : SurveyAction
 }

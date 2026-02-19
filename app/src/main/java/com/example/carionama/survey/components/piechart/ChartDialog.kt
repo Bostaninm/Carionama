@@ -54,7 +54,7 @@ fun ChartDialog(
     percentile: Float,
     onChartDialogDismiss: () -> Unit
 ) {
-    val colorCode = indicatorCategories.map { Pair(it.id, it.hslRange.randomColor()) }
+    val colorCode = remember { indicatorCategories.map { Pair(it.id, it.hslRange.randomColor()) } }
     var tabIndex by remember { mutableIntStateOf(0) }
     val tabs = listOf("Second Level", "Third Level")
 
@@ -83,26 +83,45 @@ fun ChartDialog(
                     }
                 }
                 when (tabIndex) {
-                    0 -> ChartContent(
-                        Modifier.weight(0.98f),
-                        secondLevelChartData,
-                        colorCode,
-                        percentile,
-                        decileLabel
-                    )
+                    0 -> {
+                        if (secondLevelChartData.pieChartData.isNotEmpty()) {
+                            ChartContent(
+                                Modifier.weight(0.98f),
+                                secondLevelChartData,
+                                colorCode,
+                                percentile,
+                                decileLabel
+                            )
+                        } else {
+                            EmptyChart()
+                        }
+                    }
 
-                    1 -> ChartContent(
-                        Modifier.weight(0.92f),
-                        thirdLevelChartData,
-                        decilePercentile = percentile,
-                        decileLabel = decileLabel
-                    )
+                    1 -> {
+                        if (thirdLevelChartData.pieChartData.isNotEmpty()) {
+                            ChartContent(
+                                Modifier.weight(0.92f),
+                                thirdLevelChartData,
+                                decilePercentile = percentile,
+                                decileLabel = decileLabel
+                            )
+                        } else {
+                            EmptyChart()
+                        }
+                    }
                 }
                 UButton(
                     label = "Close", onClick = onChartDialogDismiss
                 )
             }
         }
+    }
+}
+
+@Composable
+fun EmptyChart(modifier: Modifier = Modifier) {
+    Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+        Text("There are no risk factor")
     }
 }
 

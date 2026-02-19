@@ -13,6 +13,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -28,33 +29,43 @@ import com.example.carionama.R
 @Preview(showBackground = true)
 @Composable
 fun BMIDemo() {
-    BMI {}
+    BMI { height, weight, bmi -> }
 }
 
 
 @SuppressLint("DefaultLocale")
 @Composable
-fun BMI(modifier: Modifier = Modifier, setBMI: (Float) -> Unit) {
-    var height by remember { mutableStateOf(170f) }
-    var weight by remember { mutableStateOf(70f) }
-    val bmi = weight * 10000f / (height * height)
+fun BMI(
+    modifier: Modifier = Modifier,
+    initHeight: Float = 170f,
+    initWeight: Float = 70f,
+    setBMI: (Float, Float, Float) -> Unit
+) {
+    var height by remember { mutableStateOf(initHeight) }
+    var weight by remember { mutableStateOf(initWeight) }
+    val bmi = remember(height, weight) { weight * 10000f / (height * height) }
+
+    LaunchedEffect(bmi) {
+        setBMI(height, weight, bmi)
+    }
+
     Column(modifier) {
         LabeledSlider(
-            defaultValue = 160f,
+            defaultValue = initHeight,
             valueRange = 50f..220f,
             steps = 169,
             label = stringResource(R.string.height),
-            onValueChangeFinished = { setBMI(bmi) }
+//            onValueChangeFinished = { setBMI(bmi) }
         ) { value ->
             height = value
         }
 
         LabeledSlider(
-            defaultValue = 70f,
+            defaultValue = initWeight,
             valueRange = 20f..150f,
             steps = 129,
             label = stringResource(R.string.weight),
-            onValueChangeFinished = { setBMI(bmi) }
+//            onValueChangeFinished = { setBMI(bmi) }
         ) { value ->
             weight = value
         }

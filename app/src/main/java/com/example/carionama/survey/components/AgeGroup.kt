@@ -1,6 +1,7 @@
 package com.example.carionama.survey.components
 
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -10,10 +11,17 @@ import androidx.compose.ui.res.stringResource
 import com.example.carionama.R
 
 @Composable
-fun AgeGroup(modifier: Modifier = Modifier, onValidAgeEntered: (validAge: Int?) -> Unit) {
+fun AgeGroup(
+    modifier: Modifier = Modifier,
+    initAge: Int = 12,
+    onValidAgeEntered: (validAge: Int?) -> Unit
+) {
 
-    var inputAge by remember { mutableStateOf("") }
+    var inputAge by remember { mutableStateOf(initAge.toString()) }
 
+    LaunchedEffect(true) {
+        onValidAgeEntered(initAge)
+    }
 //    if (validAge != null) {
 //        viewModel.userAge = validAge
 //        viewModel.assignIndicators(indicatorsData.first, indicatorsData.second)

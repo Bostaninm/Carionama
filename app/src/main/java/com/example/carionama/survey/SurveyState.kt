@@ -14,5 +14,17 @@ data class SurveyState(
     val languageMenuExpanded: Boolean = false,
     val showChartDialog: Boolean = false,
     val showWarningDialog: Boolean = false,
-    val firstNullIndicatorName: String = ""
-)
+    val firstNullIndicatorName: String = "",
+    val percentile: Float = 0f,
+    // Business Logic?
+    // BMI
+    val currentHeight: Float = 160f,
+    val currentWeight: Float = 70f,
+    // AgeGroup
+    val currentAge: Int = 30,
+
+    )
+
+fun SurveyState.getBMI(): Float {
+    return currentWeight * 10000f / (currentHeight * currentHeight)
+}

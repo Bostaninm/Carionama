@@ -94,9 +94,9 @@ fun RangedNumberInputField(
         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
         isError = errorMessage != null,
         supportingText = {
-            if (errorMessage != null) {
+            errorMessage?.let {
                 Text(
-                    text = errorMessage!!,
+                    text = it,
                     color = MaterialTheme.colorScheme.error,
                     style = MaterialTheme.typography.bodySmall
                 )

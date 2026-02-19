@@ -60,6 +60,12 @@ class SurveyViewModel(
             is SurveyAction.OnBMIChange -> {
                 val iOption =
                     Util.getAvailableBMIOptionByValue(action.bmiView.indicator, action.bmi)
+                _state.update {
+                    it.copy(
+                        currentHeight = action.height,
+                        currentWeight = action.weight
+                    )
+                }
                 setSelection(action.bmiView, iOption)
             }
 
@@ -71,6 +77,11 @@ class SurveyViewModel(
                 if (action.validAge == null) {
                     //TODO::Error
                     return
+                }
+                _state.update {
+                    it.copy(
+                        currentAge = action.validAge
+                    )
                 }
                 val iOption =
                     Util.getAvailableAgeOptionByValue(action.ageView.indicator, action.validAge)
@@ -87,7 +98,7 @@ class SurveyViewModel(
                 }
             }
 
-            SurveyAction.DismissWarningDialog -> {
+            SurveyAction.OnDismissWarningDialog -> {
                 _state.update {
                     it.copy(
                         showWarningDialog = false,
@@ -99,7 +110,8 @@ class SurveyViewModel(
     }
 
     private fun submitSelection() {
-        state.value.indicatorViews.forEach { view ->
+        val currentState = state.value
+        currentState.indicatorViews.forEach { view ->
             if (view.selection == null) {
                 _state.update {
                     it.copy(
@@ -110,17 +122,25 @@ class SurveyViewModel(
                 return
             }
         }
+        val secondLevelViews =
+            currentState.indicatorViews.filter { it.level == IndicatorLevel.SECOND }
+        val thirdLevelViews =
+            currentState.indicatorViews.filter { it.level == IndicatorLevel.THIRD }
+        val secondLevelChartData =
+            Util.calculateChartOnIndicators(secondLevelViews, currentState.indicatorCategories)
+        val thirdLevelChartData =
+            Util.calculateChartOnIndicators(thirdLevelViews, currentState.indicatorCategories)
+        val percentile = Util.calculatePercentile(
+            (secondLevelChartData + thirdLevelChartData).pieChartData,
+            currentState.indicatorViews
+        )
+
         _state.update {
-            val secondLevelViews = it.indicatorViews.filter { it.level == IndicatorLevel.SECOND }
-            val thirdLevelViews = it.indicatorViews.filter { it.level == IndicatorLevel.THIRD }
-            val secondLevelChartData =
-                Util.calculateChartOnIndicators(secondLevelViews, it.indicatorCategories)
-            val thirdLevelChartData =
-                Util.calculateChartOnIndicators(thirdLevelViews, it.indicatorCategories)
             it.copy(
                 showChartDialog = true,
                 secondLevelChartData = secondLevelChartData,
                 thirdLevelChartData = thirdLevelChartData,
+                percentile = percentile
             )
         }
     }
@@ -128,11 +148,11 @@ class SurveyViewModel(
     private fun setSelection(indicatorView: IndicatorView, indicatorOption: IndicatorOption) {
         val newIndicatorView = indicatorView.copy(selection = indicatorOption)
         _state.update {
-            val newIndicatorView = it.indicatorViews.map { oldView ->
+            val newIndicatorViews = it.indicatorViews.map { oldView ->
                 if (oldView.indicator.id == indicatorView.indicator.id) newIndicatorView else oldView
             }
             it.copy(
-                indicatorViews = newIndicatorView
+                indicatorViews = newIndicatorViews
             )
         }
     }
@@ -166,14 +186,26 @@ class SurveyViewModel(
     private fun changeIndicatorLanguage(language: CarionamaLocals) {
         val indicatorInfo = indInfo.getResource(language)
         if (indicatorInfo != null) {
+            val currentSurveyState = _state.value
             val indicators = indicatorInfo.second + indicatorInfo.third
             val indicatorViews = indicators.map { iv ->
                 val isSecond = indicatorInfo.second.firstOrNull { it.id == iv.id } != null
                 val level = if (isSecond) IndicatorLevel.SECOND else IndicatorLevel.THIRD
-                val selectionId =
-                    state.value.indicatorViews.firstOrNull { it.indicator.id == iv.id }?.selection?.id
-                val selection =
-                    if (selectionId != null) iv.options.firstOrNull { it.id == selectionId } else null
+
+                val existingSelectionId =
+                    currentSurveyState.indicatorViews.firstOrNull { it.indicator.id == iv.id }?.selection?.id
+
+                var selection =
+                    if (existingSelectionId != null) iv.options.firstOrNull { it.id == existingSelectionId } else null
+
+                // Set default selection if none exists for special indicators
+//                if (selection == null) {
+//                    when (iv.id) {
+//                        "BMI" -> selection = Util.getAvailableBMIOptionByValue(iv, currentSurveyState.getBMI())
+//                        "AgeGroup" -> selection = Util.getAvailableAgeOptionByValue(iv, currentSurveyState.currentAge)
+//                    }
+//                }
+
                 IndicatorView(iv, selection, level)
             }
 
@@ -196,5 +228,3 @@ class SurveyViewModel(
         AppCompatDelegate.setApplicationLocales(appLocale)
     }
 }
-
-

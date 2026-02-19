@@ -1,7 +1,9 @@
 package com.example.carionama
 
+import com.example.carionama.survey.data.FirstLevelIndicatorDeserializer
 import com.example.carionama.survey.data.Indicator
 import com.example.carionama.survey.data.IndicatorCategory
+import com.example.carionama.survey.data.IndicatorDeserializer
 import com.google.gson.GsonBuilder
 import com.google.gson.reflect.TypeToken
 import org.junit.Test
@@ -23,9 +25,8 @@ class ExampleUnitTest {
             .registerTypeAdapter(Indicator::class.java, IndicatorDeserializer())
             .create()
         val indicatorListType = object : TypeToken<List<Indicator>>() {}.type
-        var inputStream: InputStream? = null
 
-        inputStream =
+        val inputStream: InputStream? =
             javaClass.classLoader?.getResourceAsStream("Importing_JSON_Level2.json")
         val builder = StringBuilder()
         val reader = BufferedReader(InputStreamReader(inputStream))
@@ -50,9 +51,8 @@ class ExampleUnitTest {
             .registerTypeAdapter(Indicator::class.java, IndicatorDeserializer())
             .create()
         val indicatorListType = object : TypeToken<List<Indicator>>() {}.type
-        var inputStream: InputStream? = null
 
-        inputStream =
+        val inputStream =
             javaClass.classLoader?.getResourceAsStream("Importing_JSON_Level3.json")
         val builder = StringBuilder()
         val reader = BufferedReader(InputStreamReader(inputStream))
@@ -80,9 +80,8 @@ class ExampleUnitTest {
             )
             .create()
         val indicatorListType = object : TypeToken<List<IndicatorCategory>>() {}.type
-        var inputStream: InputStream? = null
 
-        inputStream =
+        val inputStream =
             javaClass.classLoader?.getResourceAsStream("Indicators_Categories_En.json")
         val builder = StringBuilder()
         val reader = BufferedReader(InputStreamReader(inputStream))

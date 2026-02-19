@@ -12,7 +12,6 @@ import com.example.carionama.survey.data.Selection
 import com.himanshoe.charty.common.asSolidChartColor
 import com.himanshoe.charty.pie.model.PieChartData
 import kotlin.math.max
-import kotlin.random.Random
 
 object Util {
 
@@ -26,37 +25,37 @@ object Util {
 
     fun getAvailableAgeOptionByValue(ageIndicator: Indicator, userAge: Int): IndicatorOption {
         if (userAge in 12..99) {
-                val options = ageIndicator.options
-                for (i in options.indices) {
-                    val currentOption = options[i]
-                    val lowerBound =
-                        currentOption.description.toIntOrNull() ?: continue // Skip if not a number
+            val options = ageIndicator.options
+            for (i in options.indices) {
+                val currentOption = options[i]
+                val lowerBound =
+                    currentOption.description.toIntOrNull() ?: continue // Skip if not a number
 
-                    val isFirstOption = (i == 0)
-                    val isLastOption = (i == options.size - 1)
+                val isFirstOption = (i == 0)
+                val isLastOption = (i == options.size - 1)
 
-                    if (isLastOption) {
-                        if (userAge >= lowerBound) {
-                            return currentOption
-                        }
-                    } else if (isFirstOption) {
-                        val nextOption = options[i + 1]
-                        val upperBoundExclusive =
-                            nextOption.description.toIntOrNull() ?: continue // Skip if not a number
+                if (isLastOption) {
+                    if (userAge >= lowerBound) {
+                        return currentOption
+                    }
+                } else if (isFirstOption) {
+                    val nextOption = options[i + 1]
+                    val upperBoundExclusive =
+                        nextOption.description.toIntOrNull() ?: continue // Skip if not a number
 
-                        if (userAge < upperBoundExclusive) {
-                            return currentOption
-                        }
-                    } else {
-                        val nextOption = options[i + 1]
-                        val upperBoundExclusive =
-                            nextOption.description.toIntOrNull() ?: continue // Skip if not a number
+                    if (userAge < upperBoundExclusive) {
+                        return currentOption
+                    }
+                } else {
+                    val nextOption = options[i + 1]
+                    val upperBoundExclusive =
+                        nextOption.description.toIntOrNull() ?: continue // Skip if not a number
 
-                        if (userAge in lowerBound until upperBoundExclusive) {
-                            return currentOption
-                        }
+                    if (userAge in lowerBound until upperBoundExclusive) {
+                        return currentOption
                     }
                 }
+            }
         }
         error("No option was valid for the entered age: $userAge")
     }
@@ -100,7 +99,7 @@ object Util {
         indicatorCategory: List<IndicatorCategory>
     ): ChartData {
         val indicators = indicatorViews.map {
-            if(it.selection != null)
+            if (it.selection != null)
                 Selection(it.indicator.id, it.indicator.name, it.selection)
             else
                 error("No Selection for ${it.indicator.id}")
@@ -119,15 +118,18 @@ object Util {
         sum + base
 
         val pieChartLevels = mutableMapOf<String, MutableList<PieChartData>>()
-        for (indicator in indicators) {
-            var actualValue =
+        val size = indicators.size
+        indicators.forEachIndexed { index, indicator ->
+            val actualValue =
                 indicator.indicatorOption.value + calculateSynergy(indicator, indicators)
 
             if (actualValue > 0) {
                 val hFraction: Float = (actualValue / riskFactor) * 100
                 val flInd = calculateLevel(indicator.indicatorId, indicatorCategory)
                 val color = calculateColor(
-                    flInd
+                    flInd,
+                    index,
+                    size
                 ).asSolidChartColor()
 
                 pieChartLevels.getOrPut(flInd?.id ?: "other") { mutableListOf() }.add(
@@ -162,19 +164,19 @@ object Util {
         return flInd
     }
 
-    fun calculateColor(indicatorCategory: IndicatorCategory?): Color {
-        return indicatorCategory?.hslRange?.randomColor() ?: ColorPallet.get(
-            Random.nextInt(
-                0,
-                11
-            )
+    fun calculateColor(indicatorCategory: IndicatorCategory?, position: Int, size: Int): Color {
+        return indicatorCategory?.hslRange?.smartColor(position, size) ?: ColorPallet.get(
+            position % 12
         )
 
     }
 
-    fun calculatePercentile(data: List<PieChartData>?, references: List<Indicator>?): Float {
+    fun calculatePercentile(data: List<PieChartData>?, references: List<IndicatorView>?): Float {
         if (references == null)
             return 0f
+        val references = references.map {
+            it.indicator
+        }
 
         var total = 0f
         var maxTotal = 0f

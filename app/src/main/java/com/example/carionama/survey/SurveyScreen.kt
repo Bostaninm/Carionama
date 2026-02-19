@@ -59,7 +59,7 @@ fun SurveyScreen(
             state.indicatorCategories,
             state.secondLevelChartData,
             state.thirdLevelChartData,
-            0f,
+            state.percentile,
             {
                 onAction(
                     SurveyAction.OnChartDialogDismissed
@@ -68,7 +68,7 @@ fun SurveyScreen(
     }
     if (state.showWarningDialog) {
         NullIndicatorWarningDialog(
-            { onAction(SurveyAction.DismissWarningDialog) },
+            { onAction(SurveyAction.OnDismissWarningDialog) },
             state.firstNullIndicatorName
         )
     }
@@ -102,21 +102,22 @@ fun SurveyTopAppBar(
                     contentDescription = stringResource(id = R.string.language)
                 )
             }
-            DropdownMenu(
-                expanded = state.languageMenuExpanded,
-                onDismissRequest = { onAction(SurveyAction.OnLanguageMenuDismissed) }
-            ) {
-                CarionamaLocals.entries.forEach {
-                    DropdownMenuItem(
-                        text = { Text(stringResource(id = it.displayNameResId)) },
-                        onClick = {
-                            onAction(SurveyAction.OnLanguageSelected(it))
-                        }
-                    )
+            if (state.languageMenuExpanded) {
+                DropdownMenu(
+                    expanded = state.languageMenuExpanded,
+                    onDismissRequest = { onAction(SurveyAction.OnLanguageMenuDismissed) }
+                ) {
+                    CarionamaLocals.entries.forEach {
+                        DropdownMenuItem(
+                            text = { Text(stringResource(id = it.displayNameResId)) },
+                            onClick = {
+                                onAction(SurveyAction.OnLanguageSelected(it))
+                            }
+                        )
 
+                    }
                 }
             }
-
             // About Page Icon
             IconButton(onClick = onAboutIconClicked) {
                 Icon(
@@ -154,7 +155,8 @@ fun SurveyContent(
                         AgeGroup(
                             Modifier
                                 .fillMaxWidth()
-                                .padding(4.dp)
+                                .padding(4.dp),
+                            initAge = state.currentAge,
                         ) { validAge ->
                             onAction(SurveyAction.OnValidAgeNumberEntered(iView, validAge))
                         }
@@ -163,7 +165,18 @@ fun SurveyContent(
                     "BMI" -> {
                         BMI(
                             Modifier.padding(12.dp),
-                            { bmi -> onAction(SurveyAction.OnBMIChange(iView, bmi)) })
+                            initHeight = state.currentHeight,
+                            initWeight = state.currentWeight,
+                            { height, weight, bmi ->
+                                onAction(
+                                    SurveyAction.OnBMIChange(
+                                        iView,
+                                        height,
+                                        weight,
+                                        bmi
+                                    )
+                                )
+                            })
                     }
 
                     else -> {

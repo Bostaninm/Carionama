@@ -5,6 +5,10 @@ import kotlin.random.Random
 
 data class ValueRange(val min: Int, val max: Int) {
     fun randomValue(): Float = Random.nextInt(min, max + 1).toFloat()
+    fun percentileInRange(percentage: Float): Float {
+        val p = percentage.coerceIn(0f, 1f)
+        return (min + (max - min) * p)
+    }
 }
 
 data class HslRange(
@@ -18,6 +22,15 @@ data class HslRange(
             hue = hue.randomValue(),
             saturation = saturation.randomValue() / 100,
             lightness = lightness.randomValue() / 100
+        )
+    }
+
+    fun smartColor(position: Int, size: Int): Color {
+        val percentage = position.toFloat() / (size - 1)
+        return Color.hsl(
+            hue = hue.percentileInRange(percentage),
+            saturation = saturation.percentileInRange(percentage) / 100,
+            lightness = lightness.percentileInRange(percentage) / 100
         )
     }
 
