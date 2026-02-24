@@ -1,0 +1,28 @@
+{
+  "l2Multiplier": 0.65,
+  "l3Multiplier": 0.35,
+  "warningMessage": {
+    "title": "Important Notice",
+    "message": "This analysis is designed for adults aged 35 to 70 years based on Iranian epidemiological studies. Results may not be valid for individuals outside this age range or different populations. This tool does not replace professional dental examination or clinical diagnosis."
+  },
+  "riskCategories": [
+    {
+      "label": "Low Risk",
+      "minScore": 0,
+      "maxScore": 13,
+      "description": "Your current contributing factors to dental caries are relatively limited. Maintain your preventive habits and regular dental visits."
+    },
+    {
+      "label": "Moderate Risk",
+      "minScore": 13,
+      "maxScore": 26,
+      "description": "You have several contributing factors that may negatively affect your oral health. Preventive measures and behavioral adjustments are recommended."
+    },
+    {
+      "label": "High Risk",
+      "minScore": 26,
+      "maxScore": 100,
+      "description": "Multiple high-impact factors are contributing to your current oral health condition. Professional dental consultation and structured intervention are strongly advised."
+    }
+  ]
+}
