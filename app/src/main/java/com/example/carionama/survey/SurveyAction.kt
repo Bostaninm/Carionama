@@ -27,4 +27,7 @@ sealed interface SurveyAction {
     data object OnActionButtonClicked : SurveyAction
     data object OnChartDialogDismissed : SurveyAction
     data object OnDismissWarningDialog : SurveyAction
+    data object OnGeneralWarningProceedClicked : SurveyAction
+
+
 }

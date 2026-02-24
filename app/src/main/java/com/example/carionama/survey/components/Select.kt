@@ -112,7 +112,8 @@ fun SelectPreview() {
 //                IndicatorOption("Quintile 3 (Average)", 2.098f),
 //                IndicatorOption("Quintile 2", 2.919f),
 //                IndicatorOption("Poorest (Quintile 1)", 3.933f)
-            )
+            ),
+            "No Suggestion"
         )
         var selected by remember { mutableStateOf<IndicatorOption?>(null) }
         Select(indicator = indicator, selected = selected) {

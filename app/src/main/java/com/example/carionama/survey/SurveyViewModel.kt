@@ -11,6 +11,7 @@ import com.example.carionama.survey.data.IndicatorInfo
 import com.example.carionama.survey.data.IndicatorLevel
 import com.example.carionama.survey.data.IndicatorOption
 import com.example.carionama.survey.data.IndicatorView
+import com.example.carionama.survey.data.LocalsCarionamaMetadata
 import com.example.carionama.survey.data.getResource
 import com.example.carionama.survey.domain.Util
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -24,25 +25,31 @@ private const val TAG = "SurveyViewModel"
 
 class SurveyViewModel(
     private val indInfo: IndicatorInfo,
+    private val carionamaMetadata: List<LocalsCarionamaMetadata>,
     private val sharedPreferences: SharedPreferences
 ) : ViewModel(), KoinComponent {
     private var hasLoadedInitialData = false
     private val _state = MutableStateFlow(SurveyState())
-    val state = _state
-        .onStart {
-            if (!hasLoadedInitialData) {
-                val lanCode = sharedPreferences.getString("AppLocale", null) ?: "en"
-                val initLang = CarionamaLocals.fromCode(lanCode)
-                changeLanguage(initLang)
-
-                hasLoadedInitialData = true
+    val state = _state.onStart {
+        if (!hasLoadedInitialData) {
+            val lanCode = sharedPreferences.getString("AppLocale", null) ?: "en"
+            val initLang = CarionamaLocals.fromCode(lanCode)
+            changeLanguage(initLang)
+            _state.update {
+                it.copy(
+                    warningTitle = it.metadata.initialWarningTitle,
+                    warningMessage = it.metadata.initialWarningMessage,
+                    uiState = CarionamaUiState.ShowInitialWarning
+                )
             }
+
+            hasLoadedInitialData = true
         }
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5_000L),
-            initialValue = SurveyState()
-        )
+    }.stateIn(
+        scope = viewModelScope,
+        started = SharingStarted.WhileSubscribed(5_000L),
+        initialValue = SurveyState()
+    )
 
     fun onAction(action: SurveyAction) {
         when (action) {
@@ -62,8 +69,7 @@ class SurveyViewModel(
                     Util.getAvailableBMIOptionByValue(action.bmiView.indicator, action.bmi)
                 _state.update {
                     it.copy(
-                        currentHeight = action.height,
-                        currentWeight = action.weight
+                        currentHeight = action.height, currentWeight = action.weight
                     )
                 }
                 setSelection(action.bmiView, iOption)
@@ -101,8 +107,16 @@ class SurveyViewModel(
             SurveyAction.OnDismissWarningDialog -> {
                 _state.update {
                     it.copy(
-                        showWarningDialog = false,
-                        firstNullIndicatorName = ""
+                        showWarningDialog = false, firstNullIndicatorName = ""
+                    )
+                }
+            }
+
+
+            SurveyAction.OnGeneralWarningProceedClicked -> {
+                _state.update {
+                    it.copy(
+                        uiState = CarionamaUiState.Ready
                     )
                 }
             }
@@ -115,8 +129,7 @@ class SurveyViewModel(
             if (view.selection == null) {
                 _state.update {
                     it.copy(
-                        showWarningDialog = true,
-                        firstNullIndicatorName = view.indicator.name
+                        showWarningDialog = true, firstNullIndicatorName = view.indicator.name
                     )
                 }
                 return
@@ -126,21 +139,28 @@ class SurveyViewModel(
             currentState.indicatorViews.filter { it.level == IndicatorLevel.SECOND }
         val thirdLevelViews =
             currentState.indicatorViews.filter { it.level == IndicatorLevel.THIRD }
-        val secondLevelChartData =
+        val secondLevelChartView =
             Util.calculateChartOnIndicators(secondLevelViews, currentState.indicatorCategories)
-        val thirdLevelChartData =
+        val thirdLevelChartView =
             Util.calculateChartOnIndicators(thirdLevelViews, currentState.indicatorCategories)
-        val percentile = Util.calculatePercentile(
-            (secondLevelChartData + thirdLevelChartData).pieChartData,
-            currentState.indicatorViews
+        val chartViews = secondLevelChartView + thirdLevelChartView
+        val risk = Util.calculateRisk(
+            chartViews,
+            currentState.metadata.l2Multiplier,
+            currentState.metadata.l3Multiplier,
+        )
+        val (riskPercentile, riskLabel) = Util.calculateRiskPercentileAndLevel(
+            risk,
+            currentState.metadata.riskLevels
         )
 
         _state.update {
             it.copy(
                 showChartDialog = true,
-                secondLevelChartData = secondLevelChartData,
-                thirdLevelChartData = thirdLevelChartData,
-                percentile = percentile
+                secondLevelChartView = secondLevelChartView,
+                thirdLevelChartView = thirdLevelChartView,
+                riskPercentile = riskPercentile,
+                riskLabel = riskLabel
             )
         }
     }
@@ -181,6 +201,14 @@ class SurveyViewModel(
         }
         applySystemLanguageChange(language)
         changeIndicatorLanguage(language)
+        changeMetadataLanguage(language)
+    }
+
+    private fun changeMetadataLanguage(language: CarionamaLocals) {
+        val metadata = this.carionamaMetadata.find { it.local == language }?.carionamaMetadata
+        metadata?.let {
+            _state.update { it.copy(metadata = metadata) }
+        }
     }
 
     private fun changeIndicatorLanguage(language: CarionamaLocals) {
@@ -212,8 +240,7 @@ class SurveyViewModel(
 
             _state.update {
                 it.copy(
-                    indicatorCategories = indicatorInfo.first,
-                    indicatorViews = indicatorViews
+                    indicatorCategories = indicatorInfo.first, indicatorViews = indicatorViews
                 )
             }
         }

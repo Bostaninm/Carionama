@@ -25,6 +25,7 @@ import androidx.compose.material3.DropdownMenuItem
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBar
@@ -38,12 +39,12 @@ import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import com.example.carionama.R
 import com.example.carionama.common.data.CarionamaLocals
 import com.example.carionama.survey.components.AgeGroup
+import com.example.carionama.survey.components.AgeGroupWarningDialog
 import com.example.carionama.survey.components.BMI
 import com.example.carionama.survey.components.NullIndicatorWarningDialog
 import com.example.carionama.survey.components.Select
 import com.example.carionama.survey.components.piechart.ChartDialog
 import org.koin.androidx.compose.koinViewModel
-
 
 @Composable
 fun SurveyScreen(
@@ -57,9 +58,10 @@ fun SurveyScreen(
     if (state.showChartDialog) {
         ChartDialog(
             state.indicatorCategories,
-            state.secondLevelChartData,
-            state.thirdLevelChartData,
-            state.percentile,
+            state.secondLevelChartView,
+            state.thirdLevelChartView,
+            state.riskPercentile,
+            state.riskLabel,
             {
                 onAction(
                     SurveyAction.OnChartDialogDismissed
@@ -73,17 +75,39 @@ fun SurveyScreen(
         )
     }
 
-    Scaffold(
-        topBar = {
-            SurveyTopAppBar(state, onAction, onAboutIconClicked)
+    when (state.uiState) {
+        CarionamaUiState.Loading -> {
+            Box(modifier = Modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
+                Text(
+                    "Loading...",
+                    color = MaterialTheme.colorScheme.onBackground.copy(alpha = 0.4f)
+                )
+            }
         }
-    ) { innerPadding ->
-        SurveyContent(
-            modifier = modifier.padding(innerPadding),
-            state = state,
-            onAction = viewModel::onAction
-        )
+
+        CarionamaUiState.ShowInitialWarning ->
+            AgeGroupWarningDialog(
+                title = state.warningTitle,
+                message = state.warningMessage,
+                onProceed = {
+                    onAction(SurveyAction.OnGeneralWarningProceedClicked)
+                }
+            )
+
+        CarionamaUiState.Ready ->
+            Scaffold(
+                topBar = {
+                    SurveyTopAppBar(state, onAction, onAboutIconClicked)
+                }
+            ) { innerPadding ->
+                SurveyContent(
+                    modifier = modifier.padding(innerPadding),
+                    state = state,
+                    onAction = viewModel::onAction
+                )
+            }
     }
+
 }
 
 @Composable

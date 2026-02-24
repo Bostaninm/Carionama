@@ -1,11 +1,9 @@
 [
   {
     "id": "MicroOrganisms",
-    "name": "میکروارگانیسم‌ها",
+    "name": "میکروارگانیسم ها",
     "related_indicators_id": [
-      "ToothBrushingFrequency",
-      "Flossing",
-      "MouthwashUse"
+      "ToothBrushingFrequency"
     ],
     "hsl_ranges": {
       "hue": {
@@ -27,10 +25,9 @@
     "name": "میزبان",
     "related_indicators_id": [
       "BMI",
-      "Gender",
       "Smoking",
-      "Hypertension",
-      "AgeGroup"
+      "DrugUse",
+      "Hypertension"
     ],
     "hsl_ranges": {
       "hue": {
@@ -49,8 +46,9 @@
   },
   {
     "id": "Substrate",
-    "name": "سوبسترا",
+    "name": "مواد غذایی",
     "related_indicators_id": [
+      "SugarIntake",
       "AlcoholUse"
     ],
     "hsl_ranges": {

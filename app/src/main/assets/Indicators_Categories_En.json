@@ -2,11 +2,7 @@
   {
     "id": "MicroOrganisms",
     "name": "Micro-Organisms",
-    "related_indicators_id": [
-      "ToothBrushingFrequency",
-      "Flossing",
-      "MouthwashUse"
-    ],
+    "related_indicators_id": ["ToothBrushingFrequency"],
     "hsl_ranges": {
       "hue": {
         "min": 15,
@@ -25,13 +21,7 @@
   {
     "id": "Host",
     "name": "Host",
-    "related_indicators_id": [
-      "BMI",
-      "Gender",
-      "Smoking",
-      "Hypertension",
-      "AgeGroup"
-    ],
+    "related_indicators_id": ["BMI", "Smoking", "DrugUse", "Hypertension"],
     "hsl_ranges": {
       "hue": {
         "min": 100,
@@ -50,9 +40,7 @@
   {
     "id": "Substrate",
     "name": "Substrate",
-    "related_indicators_id": [
-      "AlcoholUse"
-    ],
+    "related_indicators_id": ["SugarIntake", "AlcoholUse"],
     "hsl_ranges": {
       "hue": {
         "min": 210,

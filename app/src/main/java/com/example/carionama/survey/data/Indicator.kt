@@ -9,20 +9,20 @@ data class Indicator(
     val id: String,
     val name: String,
     val description: String,
-    val options: List<IndicatorOption>
+    val options: List<IndicatorOption>,
+    val suggestion: String
 )
 
 class IndicatorDeserializer : JsonDeserializer<Indicator> {
     override fun deserialize(
-        json: JsonElement,
-        typeOfT: Type,
-        context: JsonDeserializationContext
+        json: JsonElement, typeOfT: Type, context: JsonDeserializationContext
     ): Indicator {
         val jsonObject = json.asJsonObject
 
         val id = jsonObject.get("id").asString
         val name = jsonObject.get("name").asString
         val description = jsonObject.get("description").asString
+        val suggestion = jsonObject.get("suggestion").asString
         val optionsArray = jsonObject.getAsJsonArray("options")
         val optionsList = mutableListOf<IndicatorOption>()
         optionsArray.forEach { entry ->
@@ -42,8 +42,7 @@ class IndicatorDeserializer : JsonDeserializer<Indicator> {
                     val effectObject = e.asJsonObject
                     effectsList.add(
                         Pair(
-                            effectObject.get("optionID").asString,
-                            effectObject.get("value").asFloat
+                            effectObject.get("optionID").asString, effectObject.get("value").asFloat
                         )
                     )
                 }
@@ -51,14 +50,11 @@ class IndicatorDeserializer : JsonDeserializer<Indicator> {
             }
             optionsList.add(
                 IndicatorOption(
-                    optionId,
-                    optionDescription,
-                    optionValue,
-                    relationsList as List<Relation>
+                    optionId, optionDescription, optionValue, relationsList as List<Relation>
                 )
             )
         }
 
-        return Indicator(id, name, description, optionsList as List<IndicatorOption>)
+        return Indicator(id, name, description, optionsList as List<IndicatorOption>, suggestion)
     }
 }

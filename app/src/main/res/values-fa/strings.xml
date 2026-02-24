@@ -26,6 +26,10 @@
     <string name="null_indicator_warning_message_with_indicator_name">به دلیل عدم وجود اطلاعات برای شاخص «%1$s»، امکان ادامه وجود ندارد. لطفاً از تکمیل تمام فیلدهای ضروری اطمینان حاصل کنید.</string>
     <string name="null_indicator_warning_message">به دلیل ناقص بودن برخی اطلاعات ضروری، امکان ادامه وجود ندارد. لطفاً از تکمیل تمام فیلدهای ضروری اطمینان حاصل کنید.</string>
     <string name="ok">باشه</string>
+    <string name="second_level">سطح دو</string>
+    <string name="third_level">سطح سه</string>
+    <string name="close">بستن</string>
+    <string name="there_are_no_risk_factor">شما هیج ریسک فاکتوری در این سطح ندارید</string>
 
 
 </resources>

@@ -28,37 +28,39 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Devices
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.Dialog
 import androidx.compose.ui.window.DialogProperties
+import com.example.carionama.R
 import com.example.carionama.common.component.UButton
 import com.example.carionama.survey.components.piechart.components.PieChartLegend
 import com.example.carionama.survey.components.piechart.components.VerticalProgress
-import com.example.carionama.survey.components.piechart.data.ChartData
+import com.example.carionama.survey.components.piechart.data.ChartView
 import com.example.carionama.survey.data.IndicatorCategory
+import com.example.carionama.survey.data.IndicatorLevel
 import com.example.carionama.theme.CarionamaTheme
 import com.himanshoe.charty.common.asSolidChartColor
 import com.himanshoe.charty.pie.PieChart
-import com.himanshoe.charty.pie.model.PieChartData
-import kotlin.math.ceil
 
 
 @Composable
 fun ChartDialog(
     indicatorCategories: List<IndicatorCategory>,
-    secondLevelChartData: ChartData,
-    thirdLevelChartData: ChartData,
-    percentile: Float,
+    secondLevelChartView: List<ChartView>,
+    thirdLevelChartView: List<ChartView>,
+    riskPercentile: Float,
+    riskBarLabel: String,
     onChartDialogDismiss: () -> Unit
 ) {
-    val colorCode = remember { indicatorCategories.map { Pair(it.id, it.hslRange.randomColor()) } }
+    val colorCode =
+        remember { indicatorCategories.map { Pair(it.name, it.hslRange.randomColor()) } }
     var tabIndex by remember { mutableIntStateOf(0) }
-    val tabs = listOf("Second Level", "Third Level")
+    val tabs = listOf(stringResource(R.string.second_level), stringResource(R.string.third_level))
 
-    val decileLabel = "${ceil(percentile / 10).toInt()}th Decile"
 
     Dialog(
         properties = DialogProperties(
@@ -84,13 +86,14 @@ fun ChartDialog(
                 }
                 when (tabIndex) {
                     0 -> {
-                        if (secondLevelChartData.pieChartData.isNotEmpty()) {
+                        if (secondLevelChartView.isNotEmpty()) {
+
                             ChartContent(
                                 Modifier.weight(0.98f),
-                                secondLevelChartData,
+                                secondLevelChartView,
                                 colorCode,
-                                percentile,
-                                decileLabel
+                                riskPercentile,
+                                riskBarLabel
                             )
                         } else {
                             EmptyChart()
@@ -98,12 +101,12 @@ fun ChartDialog(
                     }
 
                     1 -> {
-                        if (thirdLevelChartData.pieChartData.isNotEmpty()) {
+                        if (thirdLevelChartView.isNotEmpty()) {
                             ChartContent(
                                 Modifier.weight(0.92f),
-                                thirdLevelChartData,
-                                decilePercentile = percentile,
-                                decileLabel = decileLabel
+                                thirdLevelChartView,
+                                riskPercentile = riskPercentile,
+                                riskBarLabel = riskBarLabel
                             )
                         } else {
                             EmptyChart()
@@ -111,7 +114,7 @@ fun ChartDialog(
                     }
                 }
                 UButton(
-                    label = "Close", onClick = onChartDialogDismiss
+                    label = stringResource(R.string.close), onClick = onChartDialogDismiss
                 )
             }
         }
@@ -121,19 +124,21 @@ fun ChartDialog(
 @Composable
 fun EmptyChart(modifier: Modifier = Modifier) {
     Box(modifier.fillMaxSize(), contentAlignment = Alignment.Center) {
-        Text("There are no risk factor")
+        Text(stringResource(R.string.there_are_no_risk_factor))
     }
 }
 
 @Composable
 fun ChartContent(
     modifier: Modifier = Modifier,
-    chartData: ChartData,
+    chartView: List<ChartView>,
     colorCode: List<Pair<String, Color>>? = null,
-    decilePercentile: Float = 0f,
-    decileLabel: String = ""
+    riskPercentile: Float = 0f,
+    riskBarLabel: String = ""
 ) {
-    var chartCentralText by remember { mutableStateOf("") }
+    var chartCentralText by remember { mutableStateOf<String?>(null) }
+    var subCentralText by remember { mutableStateOf<String?>(null) }
+    val chartData = remember { chartView.map { it.getPieCharData() } }
 
     Surface(modifier = modifier.fillMaxSize()) {
         Column(
@@ -155,19 +160,37 @@ fun ChartContent(
                         .fillMaxSize(0.75f)
                         .align(Alignment.Center)
                 ) {
-                    Text(
-                        chartCentralText,
-                        style = MaterialTheme.typography.titleMedium,
-                        textAlign = TextAlign.Center,
-                        modifier = Modifier.align(Alignment.Center)
-                    )
+                    Column(
+                        modifier = Modifier.align(Alignment.Center),
+                        horizontalAlignment = Alignment.CenterHorizontally,
+                        verticalArrangement = Arrangement.Center
+                    ) {
+                        chartCentralText?.let {
+                            Text(
+                                it,
+                                style = MaterialTheme.typography.titleMedium,
+                                textAlign = TextAlign.Center,
+                            )
+                        }
+                        subCentralText?.let {
+                            Text(
+                                it,
+                                modifier = Modifier.padding(top = 4.dp),
+                                style = MaterialTheme.typography.labelSmall,
+                                textAlign = TextAlign.Center,
+                            )
+                        }
+                    }
                 }
                 PieChart(
-                    data = { chartData.pieChartData },
+                    data = { chartData },
                     modifier = Modifier.fillMaxSize(1f),
                     isDonutChart = true,
                     onPieChartSliceClick = { slice ->
-                        chartCentralText = slice.label
+                        val cView = chartView.find { it.label == slice.label }
+                        chartCentralText = cView?.centralText
+                        subCentralText = cView?.subCentralText
+
                     })
             }
             Row(
@@ -191,8 +214,8 @@ fun ChartContent(
 
                     PieChartLegend(
                         modifier = Modifier.padding(horizontal = 16.dp),
-                        chartData.pieChartData.associate { it.label to it.value.toInt() },
-                        chartData.pieChartData.map { it.color.value[0] })
+                        chartView.map { it.legendLabel },
+                        chartView.map { it.color.value[0] })
                 }
                 Box(
                     Modifier
@@ -201,7 +224,7 @@ fun ChartContent(
                         .align(Alignment.CenterVertically),
                     contentAlignment = Alignment.Center
                 ) {
-                    VerticalProgress(decilePercentile, Modifier, decileLabel)
+                    VerticalProgress(riskPercentile, Modifier, riskBarLabel)
 
                 }
 
@@ -215,18 +238,53 @@ fun ChartContent(
 fun PreviewChartContent() {
     CarionamaTheme {
         val data = listOf(
-            PieChartData(1f, Color.Red.asSolidChartColor(), label = "Red"),
-            PieChartData(1f, Color.Blue.asSolidChartColor(), label = "Blue"),
-            PieChartData(2f, Color.Green.asSolidChartColor(), label = "Green Color"),
-            PieChartData(3f, Color.Magenta.asSolidChartColor(), label = "Purple Color of the gods"),
+            ChartView(
+                "red",
+                "Red",
+                "No Suggestion",
+                "labels",
+                1f,
+                Color.Red.asSolidChartColor(),
+                label = "Red",
+                level = IndicatorLevel.SECOND
+            ),
+            ChartView(
+                "red",
+                "Red",
+                "No Suggestion",
+                "labels",
+                1f,
+                Color.Blue.asSolidChartColor(),
+                label = "Blue",
+                level = IndicatorLevel.SECOND
+            ),
+            ChartView(
+                "red",
+                "Red",
+                "No Suggestion",
+                "labels",
+                2f,
+                Color.Green.asSolidChartColor(),
+                label = "Green Color",
+                level = IndicatorLevel.SECOND
+            ),
+            ChartView(
+                "red",
+                "Red",
+                "No Suggestion",
+                "labels",
+                3f,
+                Color.Magenta.asSolidChartColor(),
+                label = "Purple Color of the gods",
+                level = IndicatorLevel.SECOND
+            ),
         )
         val colorCodes = listOf(
             Pair("MicroOrganisms", Color.Yellow),
             Pair("Host", Color.Green),
             Pair("Substrate", Color.Blue)
         )
-        val chartData = ChartData(data)
-        ChartContent(modifier = Modifier, chartData, colorCodes)
+        ChartContent(modifier = Modifier, data, colorCodes)
 
     }
 }

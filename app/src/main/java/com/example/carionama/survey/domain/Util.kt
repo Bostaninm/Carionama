@@ -3,15 +3,15 @@ package com.example.carionama.survey.domain
 import android.annotation.SuppressLint
 import android.util.Log
 import androidx.compose.ui.graphics.Color
-import com.example.carionama.survey.components.piechart.data.ChartData
+import com.example.carionama.survey.components.piechart.data.ChartView
 import com.example.carionama.survey.data.Indicator
 import com.example.carionama.survey.data.IndicatorCategory
+import com.example.carionama.survey.data.IndicatorLevel.SECOND
+import com.example.carionama.survey.data.IndicatorLevel.THIRD
 import com.example.carionama.survey.data.IndicatorOption
 import com.example.carionama.survey.data.IndicatorView
-import com.example.carionama.survey.data.Selection
+import com.example.carionama.survey.data.RiskLevel
 import com.himanshoe.charty.common.asSolidChartColor
-import com.himanshoe.charty.pie.model.PieChartData
-import kotlin.math.max
 
 object Util {
 
@@ -76,18 +76,18 @@ object Util {
         Color.hsl(3f, 0.100f, 0.69f)
     )
 
-    fun calculateSynergy(currentSelection: Selection, selections: List<Selection>): Float {
+    fun calculateSynergy(currentSelection: IndicatorView, selections: List<IndicatorView>): Float {
         var addedSynergy = 0f
-        val relations = currentSelection.indicatorOption.relations
-        Log.d("calculateSynergy", "Calculating for ${currentSelection.indicatorName}")
+        val relations = currentSelection.selection?.relations
+        Log.d("calculateSynergy", "Calculating for ${currentSelection.indicator.name}")
         for (selection in selections) {
-            if (selection.indicatorId != currentSelection.indicatorId) {
-                addedSynergy += relations.find { it.id == selection.indicatorId }?.effect?.find { it.first == selection.indicatorOption.id }?.second
+            if (selection.indicator.id != currentSelection.indicator.id) {
+                addedSynergy += relations?.find { it.id == selection.indicator.id }?.effect?.find { it.first == selection.selection?.id }?.second
                     ?: 0f
-                Log.d("calculateSynergy", "     ${selection.indicatorName} :: $addedSynergy")
+                Log.d("calculateSynergy", "     ${selection.indicator.name} :: $addedSynergy")
             }
         }
-        Log.d("calculateSynergy", "Calculation result : ${addedSynergy}")
+        Log.d("calculateSynergy", "Calculation result : $addedSynergy")
 
         return addedSynergy
 
@@ -95,70 +95,65 @@ object Util {
 
     @SuppressLint("DefaultLocale")
     fun calculateChartOnIndicators(
-        indicatorViews: List<IndicatorView>,
-        indicatorCategory: List<IndicatorCategory>
-    ): ChartData {
-        val indicators = indicatorViews.map {
-            if (it.selection != null)
-                Selection(it.indicator.id, it.indicator.name, it.selection)
-            else
-                error("No Selection for ${it.indicator.id}")
-        }
+        indicatorViews: List<IndicatorView>, indicatorCategory: List<IndicatorCategory>
+    ): List<ChartView> {
+//        val indicators = indicatorViews.map {
+//            if (it.selection != null)
+//                Selection(it.indicator.id, it.indicator.name, it.selection)
+//            else
+//                error("No Selection for ${it.indicator.id}")
+//        }
+
         var sum = 0f
         var riskFactor = 0f
+        val actualValues = mutableMapOf<String, Float>()
 
-        for (indicator in indicators) {
-            val actualValue =
-                indicator.indicatorOption.value + calculateSynergy(indicator, indicators)
+        for (view in indicatorViews) {
+            val actualValue = (view.selection?.value ?: 0f) + calculateSynergy(view, indicatorViews)
             sum += actualValue
-            if (actualValue > 0)
-                riskFactor += actualValue
+            if (actualValue > 0) riskFactor += actualValue
+            actualValues[view.indicator.id] = actualValue
         }
-        val base = 10
-        sum + base
 
-        val pieChartLevels = mutableMapOf<String, MutableList<PieChartData>>()
-        val size = indicators.size
-        indicators.forEachIndexed { index, indicator ->
-            val actualValue =
-                indicator.indicatorOption.value + calculateSynergy(indicator, indicators)
-
+        val size = indicatorViews.size
+        val pieChartLevels = mutableMapOf<String, MutableList<ChartView>>()
+        indicatorViews.forEachIndexed { index, view ->
+            val actualValue = actualValues[view.indicator.id] ?: 0f
             if (actualValue > 0) {
                 val hFraction: Float = (actualValue / riskFactor) * 100
-                val flInd = calculateLevel(indicator.indicatorId, indicatorCategory)
+                val flInd = calculateLevel(view.indicator.id, indicatorCategory)
                 val color = calculateColor(
-                    flInd,
-                    index,
-                    size
+                    flInd, index, size
                 ).asSolidChartColor()
 
-                pieChartLevels.getOrPut(flInd?.id ?: "other") { mutableListOf() }.add(
-                    PieChartData(
-                        actualValue,
-                        color,
+                val nameAndFraction =
+                    "${view.indicator.name} - ${String.format("%.1f", hFraction)}%"
+                pieChartLevels.getOrPut(flInd?.name ?: "other") { mutableListOf() }.add(
+                    ChartView(
+                        id = view.indicator.id,
+                        centralText = nameAndFraction,
+                        subCentralText = view.indicator.suggestion,
+                        legendLabel = nameAndFraction,
+                        value = actualValue,
+                        color = color,
                         labelColor = color,
-                        label = "${indicator.indicatorName} - ${
-                            String.format(
-                                "%.1f",
-                                hFraction
-                            )
-                        }%"
+                        label = view.indicator.id,
+                        level = view.level
                     )
                 )
 
             }
 
         }
-        val pieChartData = mutableListOf<PieChartData>()
+        val chartViews = mutableListOf<ChartView>()
         for (levels in pieChartLevels) {
-            pieChartData += levels.value.sortedByDescending { it.value }
+            chartViews += levels.value.sortedByDescending { it.value }
         }
-        return ChartData(pieChartData)
+        return chartViews
     }
 
     fun calculateLevel(
-        indicatorId: String,
-        indicatorCategory: List<IndicatorCategory>
+        indicatorId: String, indicatorCategory: List<IndicatorCategory>
     ): IndicatorCategory? {
         val flInd = indicatorCategory.find { it.relatedIndicators.contains(indicatorId) }
         return flInd
@@ -168,38 +163,50 @@ object Util {
         return indicatorCategory?.hslRange?.smartColor(position, size) ?: ColorPallet.get(
             position % 12
         )
-
     }
 
-    fun calculatePercentile(data: List<PieChartData>?, references: List<IndicatorView>?): Float {
-        if (references == null)
-            return 0f
-        val references = references.map {
-            it.indicator
-        }
-
+    fun calculateRisk(
+        indicatorViews: List<ChartView>, l2Multiplier: Float, l3Multiplier: Float
+    ): Float {
         var total = 0f
-        var maxTotal = 0f
-        for (r in references) {
-            var maxForOption = 0f
-            for (o in r.options) {
-                val currentBase = o.value
-                var maxRelationSynergy = 0f
-                for (rel in o.relations) {
-                    var maxEffect = 0f
-                    for (e in rel.effect) {
-                        maxEffect = max(maxRelationSynergy, e.second)
-                    }
-                    maxRelationSynergy += maxEffect
+        indicatorViews.forEach { view ->
+            total += when (view.level) {
+                SECOND -> {
+                    Log.d(
+                        "RiskScore",
+                        "name:${view.id} multi:$l2Multiplier riskScore:${view.value} calculatedRisk:${view.value * l2Multiplier}"
+                    )
+                    view.value * l2Multiplier
                 }
-                maxForOption = max(maxForOption, maxRelationSynergy + currentBase)
+
+                THIRD -> {
+                    Log.d(
+                        "RiskScore",
+                        "name:${view.id} multi:$l3Multiplier riskScore:${view.value} calculatedRisk:${view.value * l3Multiplier}"
+                    )
+                    view.value * l3Multiplier
+                }
             }
-            maxTotal += maxForOption
         }
+        Log.d("RiskScore", "total Risk: ${total}")
+        return total
+    }
 
-        data?.forEach { total += it.value }
+    fun calculateRiskPercentileAndLevel(
+        riskScore: Float,
+        riskLevels: List<RiskLevel>
+    ): Pair<Float, String> {
+        var max = 0f
+        var label = ""
+        riskLevels.forEach { rl ->
+            if (riskScore in rl.scoreRange) {
+                label = rl.label
+            }
+            max = maxOf(rl.scoreRange.endInclusive, max)
+        }
+        val percentile = (riskScore / max) * 100
+        return Pair(percentile, label)
 
-        return total / maxTotal * 100
     }
 
 }

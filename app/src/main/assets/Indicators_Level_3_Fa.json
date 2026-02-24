@@ -1,341 +1,84 @@
 [
   {
-    "id": "EducationLevel",
-    "name": "سطح تحصیلات",
-    "description": "لطفاً بالاترین سطح تحصیلات خود را انتخاب کنید.",
+    "id": "Age",
+    "name": "سن",
+    "description": "در کدام بازه سنی قرار دارید؟",
+    "suggestion": "با افزایش سن، معاینات منظم دندانپزشکی را جدی‌تر دنبال کنید.",
     "options": [
+      {"id":1,"description":"۳۵ تا ۴۴ سال","value":0.0,"relations":[]},
+      {"id":2,"description":"۴۵ تا ۵۴ سال","value":4.10,"relations":[]},
       {
-        "id": 1,
-        "description": "مدرک دانشگاهی یا بالاتر",
-        "value": 0.0,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "description": "کمتر از مدرک دانشگاهی (مثلاً دیپلم دبیرستان)",
-        "value": 1.5,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      }
-    ]
-  },
-  {
-    "id": "MaritalStatus",
-    "name": "وضعیت تأهل",
-    "description": "لطفاً وضعیت تأهل خود را انتخاب کنید.",
-    "options": [
-      {
-        "id": 1,
-        "description": "مجرد",
-        "value": 0.0,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 2,
-        "description": "متأهل",
-        "value": 1.644,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 3,
-        "description": "مطلقه یا بیوه",
-        "value": 1.770,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
+        "id":3,
+        "description":"۵۵ تا ۷۰ سال",
+        "value":8.572,
+        "relations":[
+          {"id":"MaritalStatus","relation":[{"optionID":3,"value":0.5}]},
+          {"id":"SES","relation":[{"optionID":3,"value":0.7}]}
         ]
       }
     ]
   },
   {
     "id": "SES",
-    "name": "وضعیت اجتماعی-اقتصادی (SES)",
-    "description": "لطفاً گروه اجتماعی-اقتصادی خود را بر اساس چندک‌های درآمدی انتخاب کنید (چندک ۵ = ثروتمندترین).",
+    "name": "وضعیت اقتصادی اجتماعی",
+    "description": "وضعیت اقتصادی اجتماعی خود را چگونه ارزیابی می‌کنید؟",
+    "suggestion": "حتی با منابع محدود، مراقبت‌های پیشگیرانه دهان و دندان را در اولویت قرار دهید.",
     "options": [
+      {"id":1,"description":"بالا","value":0.0,"relations":[]},
+      {"id":2,"description":"متوسط","value":1.80,"relations":[]},
       {
-        "id": 1,
-        "description": "ثروتمندترین (چندک ۵)",
-        "value": 0.0,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
+        "id":3,
+        "description":"پایین",
+        "value":3.93,
+        "relations":[
+          {"id":"Education","relation":[{"optionID":3,"value":0.6}]},
+          {"id":"Age","relation":[{"optionID":3,"value":0.7}]}
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "Education",
+    "name": "تحصیلات",
+    "description": "بالاترین سطح تحصیلات شما چیست؟",
+    "suggestion": "دانش خود را درباره بهداشت دهان و روش‌های پیشگیری افزایش دهید.",
+    "options": [
+      {"id":1,"description":"دانشگاهی","value":0.0,"relations":[]},
+      {"id":2,"description":"دیپلم","value":1.15,"relations":[]},
       {
-        "id": 2,
-        "description": "بالاتر از متوسط (چندک ۴)",
-        "value": 1.234,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
+        "id":3,
+        "description":"ابتدایی یا کمتر",
+        "value":2.32,
+        "relations":[
+          {"id":"SES","relation":[{"optionID":3,"value":0.6}]}
         ]
-      },
+      }
+    ]
+  },
+  {
+    "id": "Gender",
+    "name": "جنسیت",
+    "description": "جنسیت شما چیست؟",
+    "suggestion": "مراقبت منظم از دهان و دندان را به صورت مستمر دنبال کنید.",
+    "options": [
+      {"id":1,"description":"مرد","value":0.0,"relations":[]},
+      {"id":2,"description":"زن","value":1.137,"relations":[]}
+    ]
+  },
+  {
+    "id": "MaritalStatus",
+    "name": "وضعیت تأهل",
+    "description": "وضعیت تأهل شما چیست؟",
+    "suggestion": "به طور مستقل برنامه منظم مراقبت دهان و دندان خود را حفظ کنید.",
+    "options": [
+      {"id":1,"description":"متأهل","value":0.0,"relations":[]},
+      {"id":2,"description":"مجرد","value":0.9,"relations":[]},
       {
-        "id": 3,
-        "description": "متوسط (چندک ۳)",
-        "value": 2.098,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 4,
-        "description": "پایین‌تر از متوسط (چندک ۲)",
-        "value": 2.919,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
-        ]
-      },
-      {
-        "id": 5,
-        "description": "فقیرترین (چندک ۱)",
-        "value": 3.933,
-        "relations": [
-          {
-            "id": "EducationLevel",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 }
-            ]
-          },
-          {
-            "id": "MaritalStatus",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 }
-            ]
-          },
-          {
-            "id": "SES",
-            "relation": [
-              { "optionID": 1, "value": 0 },
-              { "optionID": 2, "value": 0 },
-              { "optionID": 3, "value": 0 },
-              { "optionID": 4, "value": 0 },
-              { "optionID": 4, "value": 0 }
-            ]
-          }
+        "id":3,
+        "description":"بیوه یا مطلقه",
+        "value":1.77,
+        "relations":[
+          {"id":"Age","relation":[{"optionID":3,"value":0.5}]}
         ]
       }
     ]

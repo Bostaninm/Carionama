@@ -25,6 +25,10 @@
     <string name="null_indicator_warning_message_with_indicator_name">We couldn\'t proceed because information for the indicator \"%1$s\" is missing. Please ensure all required fields are completed.</string>
     <string name="null_indicator_warning_message">We couldn\'t proceed because some required information is missing. Please ensure all required fields are completed.</string>
     <string name="ok">OK</string>
+    <string name="second_level">Second Level</string>
+    <string name="third_level">Third Level</string>
+    <string name="close">Close</string>
+    <string name="there_are_no_risk_factor">There is no risk factor in this level</string>
 
 
 </resources>

@@ -6,7 +6,8 @@ import com.example.carionama.survey.SurveyViewModel
 import com.example.carionama.survey.data.IndicatorCategoryResource
 import com.example.carionama.survey.data.IndicatorInfo
 import com.example.carionama.survey.data.IndicatorResource
-import com.example.carionama.util.ReadIndicatorsData
+import com.example.carionama.survey.data.LocalsCarionamaMetadata
+import com.example.carionama.util.ReadJsonData
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.module.dsl.viewModel
 import org.koin.core.qualifier.named
@@ -20,15 +21,20 @@ val appModule = module {
 
     viewModel {
         SurveyViewModel(
-            get(), androidContext().getSharedPreferences("AppSettings", MODE_PRIVATE)
+            get(),
+            get(),
+            androidContext().getSharedPreferences("AppSettings", MODE_PRIVATE)
         )
     }
 
     // This runs blocking the main thread(IO Operation) but the file is small so there should be no problem
     // Change if there is too much delay on app start
+    single<ReadJsonData> {
+        ReadJsonData(androidContext())
+    }
+
     single<IndicatorInfo> {
-        val context = androidContext()
-        val r = ReadIndicatorsData(context)
+        val r: ReadJsonData = get()
         val categoryFileName = "Indicators_Categories"
         val secondLevelFileName = "Indicators_Level_2"
         val thirdLevelFileName = "Indicators_Level_3"
@@ -43,5 +49,15 @@ val appModule = module {
         })
 
         IndicatorInfo(categories, secondLevelIndicators, thirdLevelIndicators)
+    }
+
+    single<List<LocalsCarionamaMetadata>> {
+        val r: ReadJsonData = get()
+        var metadata = mutableListOf<LocalsCarionamaMetadata>()
+        CarionamaLocals.entries.forEach {
+            val metadataFileName = "Metadata_$it.json"
+            metadata.add(LocalsCarionamaMetadata(it, r.readCarionamaMetadata(metadataFileName)))
+        }
+        metadata
     }
 }

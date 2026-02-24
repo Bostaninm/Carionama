@@ -6,10 +6,10 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.rounded.Warning
 import androidx.compose.material3.Icon
@@ -31,7 +31,12 @@ import com.example.carionama.R
 import com.example.carionama.common.component.UButton
 
 @Composable
-fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
+fun AgeGroupWarningDialog(
+    message: String,
+    title: String,
+    onClose: (() -> Unit)? = null,
+    onProceed: () -> Unit
+) {
     Box(
         contentAlignment = Alignment.Center,
         modifier = Modifier
@@ -42,19 +47,20 @@ fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
             shadowElevation = 8.dp,
             shape = ShapeDefaults.Medium,
             modifier = Modifier
-                .fillMaxHeight(0.4f)
+//                .fillMaxHeight(0.5f)
                 .padding(horizontal = 24.dp)
         ) {
             Column {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth(1f)
-                        .weight(1f)
-                        .background(MaterialTheme.colorScheme.error),
+//                        .weight(0.66f)
+                        .background(MaterialTheme.colorScheme.error)
+                        .padding(8.dp),
                     contentAlignment = Alignment.Center
                 ) {
                     Icon(
-                        modifier = Modifier.fillMaxSize(0.75f),
+                        modifier = Modifier.size(128.dp),
                         imageVector = Icons.Rounded.Warning,
                         tint = MaterialTheme.colorScheme.onError,
                         contentDescription = stringResource(R.string.warning_sign)
@@ -63,12 +69,16 @@ fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
                 Box(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .weight(1f)
-                        .padding(horizontal = 12.dp)
+//                        .weight(1f)
+                        .padding(horizontal = 16.dp)
                 ) {
-                    Column(modifier = Modifier.align(Alignment.Center)) {
+                    Column(
+                        modifier = Modifier
+                            .align(Alignment.TopCenter)
+                            .padding(top = 12.dp)
+                    ) {
                         Text(
-                            stringResource(R.string.warning_for_age_group_18_35),
+                            title,
                             style = MaterialTheme.typography.titleMedium,
                             color = MaterialTheme.colorScheme.error,
                             modifier = Modifier
@@ -78,7 +88,8 @@ fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
                             fontWeight = FontWeight.SemiBold
                         )
                         Text(
-                            stringResource(R.string.age_group_young_warning),
+                            message,
+                            modifier = Modifier.padding(top = 8.dp, end = 4.dp, start = 4.dp),
                             style = MaterialTheme.typography.bodyMedium,
                             textAlign = TextAlign.Justify,
                         )
@@ -90,10 +101,12 @@ fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
                         .fillMaxWidth(),
                     horizontalArrangement = Arrangement.End
                 ) {
-                    TextButton(onClick = onClose) {
-                        Text(stringResource(R.string.cancel))
+                    if (onClose != null) {
+                        TextButton(onClick = onClose) {
+                            Text(stringResource(R.string.cancel))
+                        }
+                        Spacer(Modifier.padding(8.dp))
                     }
-                    Spacer(Modifier.padding(8.dp))
                     UButton(
                         label = stringResource(R.string.proceed),
                         vPadding = 0.dp,
@@ -108,5 +121,5 @@ fun AgeGroupWarningDialog(onClose: () -> Unit, onProceed: () -> Unit) {
 @Preview(showBackground = true, showSystemUi = true)
 @Composable
 fun AgeGroupWarningDialogPreview() {
-    AgeGroupWarningDialog({}, {})
+    AgeGroupWarningDialog("TITLE", "message", {}, {})
 }
