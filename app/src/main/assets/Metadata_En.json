@@ -9,19 +9,19 @@
     {
       "label": "Low Risk",
       "minScore": 0,
-      "maxScore": 13,
+      "maxScore": 5.86,
       "description": "Your current contributing factors to dental caries are relatively limited. Maintain your preventive habits and regular dental visits."
     },
     {
       "label": "Moderate Risk",
-      "minScore": 13,
-      "maxScore": 26,
+      "minScore": 5.86,
+      "maxScore": 11.71,
       "description": "You have several contributing factors that may negatively affect your oral health. Preventive measures and behavioral adjustments are recommended."
     },
     {
       "label": "High Risk",
-      "minScore": 26,
-      "maxScore": 100,
+      "minScore": 11.71,
+      "maxScore": 18,
       "description": "Multiple high-impact factors are contributing to your current oral health condition. Professional dental consultation and structured intervention are strongly advised."
     }
   ]
